@@ -35,7 +35,7 @@
     background-color: #ffffff !important;
     color: $systemTheme !important;
   }
-  .el-menu-item-group  {
+  .el-menu-item-group {
     background-color: #ffffff !important;
   }
 }
@@ -48,7 +48,7 @@
       background-color: inherit;
     }
     &.is-active {
-      color:$sidebarThemeText;
+      color: $sidebarThemeText;
       background-color: $systemTheme;
     }
   }
@@ -91,14 +91,14 @@
   margin-bottom: 0;
   padding: $paddingWidth !important;
   border-bottom: $border;
-  &>span {
+  & > span {
     font-size: 16px;
     font-weight: 500;
   }
-  .el-drawer__close-btn>i {
+  .el-drawer__close-btn > i {
     font-size: 20px;
   }
 }
-.el-drawer__body{
+.el-drawer__body {
   padding: $paddingWidth;
 }

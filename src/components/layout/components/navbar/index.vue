@@ -4,30 +4,30 @@
       <fold class="navbar-icon" />
     </div>
     <div class="header-right">
-      <setting class="navbar-icon" @click="showSetting"/>
+      <setting class="navbar-icon" @click="showSetting" />
     </div>
   </div>
   <system-setting ref="setting"></system-setting>
 </template>
 
 <script>
-import {ref} from 'vue'
+import { ref } from 'vue'
 import { Fold, Setting } from '@element-plus/icons'
-import SystemSetting from './Setting.vue'
+import SystemSetting from '../setting/index.vue'
 export default {
   components: { Fold, Setting, SystemSetting },
   setup() {
     let setting = ref(null)
-    let showSetting = () => { // 显示设置页
+    let showSetting = () => {
+      // 显示设置页
       setting.value.showDraw()
     }
     return {
       setting,
-      showSetting
+      showSetting,
     }
-  }
+  },
 }
 </script>
 
-<style>
-</style>
+<style></style>

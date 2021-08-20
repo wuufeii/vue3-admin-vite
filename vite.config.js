@@ -46,9 +46,9 @@ export default ({ command }) => {
       preprocessorOptions: {
         scss: {
           // additionalData: '@import "@/styles/_variables";',
-          javascriptEnabled: true
+          javascriptEnabled: true,
         },
       },
-    }
+    },
   }
 }

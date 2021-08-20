@@ -16,24 +16,23 @@
 </template>
 
 <script>
-import Sidebar from './components/Sidebar.vue'
-import Navbar from './components/Navbar.vue'
+import Sidebar from './components/sidebar/Sidebar.vue'
+import Navbar from './components/navbar/index.vue'
 import Home from 'views/Home.vue'
-import {computed} from 'vue'
-import {useRoute} from 'vue-router'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 export default {
-  components: {Sidebar, Navbar, Home},
+  components: { Sidebar, Navbar, Home },
   setup() {
     let route = useRoute()
-    let currentPath = computed(() => {return route.path})
+    let currentPath = computed(() => {
+      return route.path
+    })
     return {
-      currentPath
+      currentPath,
     }
-  }
-
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

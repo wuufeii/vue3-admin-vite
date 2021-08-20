@@ -36,7 +36,7 @@
           :key="index"
           :class="{ active: item === systemThemeColor }"
           :style="{ backgroundColor: item }"
-          @click="changeSetting('systemThemeColor',item)"
+          @click="changeSetting('systemThemeColor', item)"
         ></div>
         <el-color-picker v-model="systemThemeColor"></el-color-picker>
       </div>
@@ -48,7 +48,7 @@
           :key="index"
           :class="{ active: item === navbarThemeColor }"
           :style="{ backgroundColor: item }"
-           @click="changeSetting('navbarThemeColor',item)"
+          @click="changeSetting('navbarThemeColor', item)"
         ></div>
         <el-color-picker v-model="navbarThemeColor"></el-color-picker>
       </div>
@@ -60,7 +60,7 @@
           :key="index"
           :class="{ active: item === sidebarThemeColor }"
           :style="{ backgroundColor: item }"
-          @click="changeSetting('sidebarThemeColor',item)"
+          @click="changeSetting('sidebarThemeColor', item)"
         ></div>
         <el-color-picker v-model="sidebarThemeColor"></el-color-picker>
       </div>
@@ -71,92 +71,22 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
-import {useStore} from 'vuex'
-import {getThemes} from 'utils/themes'
+import { useStore } from 'vuex'
+import { _data, _changeSetting, _getThemes } from './index.js'
 export default {
   setup() {
-    getThemes()
-    let data = reactive({
-      drawer: false,
-      dayMode: false,
-      navbarType: '左侧菜单模式',
-      navbarList: [
-        '左侧菜单模式',
-        '顶部菜单混合模式',
-        '顶部菜单模式',
-        '左侧菜单混合模式',
-      ],
-      systemThemeColor: '#0096bd',
-      systemThemeList: [
-        '#0096bd',
-        '#0084f4',
-        '#009688',
-        '#536df3',
-        '#ff5c93',
-        '#ee4f12',
-        '#0096c7',
-        '#9c27b0',
-        '#ff9800',
-      ],
-      navbarThemeColor: '#ffffff',
-      navbarThemeList: [
-        '#ffffff',
-        '#151515',
-        '#009688',
-        '#5172dc',
-        '#409eff',
-        '#e74c3c',
-        '#24292e',
-        '#394664',
-        '#001529',
-        '#383f45',
-      ],
-      sidebarThemeColor: '#001529',
-      sidebarThemeList: [
-        '#001529',
-        '#212121',
-        '#273352',
-        '#ffffff',
-        '#191b24',
-        '#191a23',
-        '#304156',
-        '#28333e',
-        '#344058',
-        '#383f45',
-      ],
-    })
-    let showDraw = () => {
-      // 显示设置项
-      data.drawer = true
-    }
+    const data = reactive(_data)
+    const store = useStore()
 
-    let store = useStore()
-    let changeSetting = (type,value) => {
-      // 改变主题
-      data[type] = value
-      let obj = { type, value }
-      store.commit('changeThemes', obj)
-      if(type === 'navbarThemeColor') {
-        let color = value === '#ffffff' ? '#000000' : '#ffffff'
-        store.commit('changeThemes', {
-            type: 'navbarThemeTextColor',
-            value: color
-          })
-      }
-      if(type === 'sidebarThemeColor') {
-        let color = value === '#ffffff' ? '#000000d9' : '#ffffff'
-        store.commit('changeThemes', {
-          type: 'sidebarThemeTextColor',
-          value: color
-        })
-      }
-    }
-
-    let params = toRefs(data)
+    _getThemes({data})
+    const showDraw = () => (data.drawer = true)
+    const changeSetting = (type, value) =>
+      _changeSetting({ type, value, store, data })
+    const params = toRefs(data)
     return {
       ...params,
       showDraw,
-      changeSetting
+      changeSetting,
     }
   },
 }
