@@ -1,7 +1,7 @@
 <template>
-  <el-container class="">
+  <el-container v-if="navbarType === '左侧菜单模式'" class="layout-type-1">
     <el-aside width="200px">
-      <sidebar></sidebar>
+      <sidebar :showLogo="true"></sidebar>
     </el-aside>
     <el-container>
       <el-header>
@@ -13,23 +13,77 @@
       </el-main>
     </el-container>
   </el-container>
+
+  <el-container
+    v-else-if="navbarType === '顶部菜单混合模式'"
+    class="layout-type-2"
+  >
+    <el-header>
+      <navbar :showLogo="true"></navbar>
+    </el-header>
+    <el-container>
+      <el-aside width="200px">
+        <sidebar></sidebar>
+      </el-aside>
+      <!-- <home v-if="currentPath === '/'"></home>
+        <router-view v-else /> -->
+    </el-container>
+  </el-container>
+
+  <el-container v-else-if="navbarType === '顶部菜单模式'" class="layout-type-3">
+    <el-header>
+      <navbar :showLogo="true">
+        <template v-slot:sidebar>
+          <sidebar mode="horizontal"></sidebar>
+        </template>
+      </navbar>
+    </el-header>
+    <el-container>
+      <el-main><div @click="test">点我</div></el-main>
+    </el-container>
+  </el-container>
+
+  <el-container v-else class="layout-type-4">
+    <el-header>
+      <navbar></navbar>
+    </el-header>
+    <el-container>
+      <el-aside width="200px">
+        <sidebar mode="horizontal"></sidebar>
+      </el-aside>
+      <el-main><div @click="test">点我</div></el-main>
+    </el-container>
+  </el-container>
 </template>
 
+
 <script>
-import Sidebar from './components/sidebar/Sidebar.vue'
+import Sidebar from './components/sidebar/index.vue'
 import Navbar from './components/navbar/index.vue'
 import Home from 'views/Home.vue'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 export default {
   components: { Sidebar, Navbar, Home },
   setup() {
-    let route = useRoute()
-    let currentPath = computed(() => {
+    const route = useRoute()
+    const store = useStore()
+    const type = ref(true)
+    const test = () => {
+      type.value = !type.value
+    }
+    const currentPath = computed(() => {
       return route.path
+    })
+    const navbarType = computed(() => {
+      return store.state.navbarType
     })
     return {
       currentPath,
+      type,
+      test,
+      navbarType,
     }
   },
 }

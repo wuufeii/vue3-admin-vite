@@ -17,6 +17,7 @@
           v-for="(item, index) in navbarList"
           :key="index"
           :content="item"
+          :disabled="!drawer"
         >
           <div
             :class="[
@@ -24,7 +25,7 @@
               `nav-item-${index}`,
               { active: navbarType === item },
             ]"
-            @click="navType = item"
+            @click="changeSetting('navbarType', item)"
           ></div>
         </el-tooltip>
       </div>

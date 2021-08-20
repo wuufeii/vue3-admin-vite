@@ -1,24 +1,22 @@
 :root {
   --systemThemeColor: #0960bd;
   --navbarThemeColor: #ffffff;
-  --navbarThemeTextColor: #ffffff;
   --sidebarThemeColor: #001529;
-  --sidebarThemeTextColor: #001529;
-  // --sidebarThemeTextColorActive: #ffffff;
+  --sidebarThemeColorActive: #0960bd;
+  --sss: #001529;
 }
 
 $systemTheme: var(--systemThemeColor);
 $navbarTheme: var(--navbarThemeColor);
-$navbarThemeText: var(--navbarThemeTextColor);
 $sidebarTheme: var(--sidebarThemeColor);
-$sidebarThemeText: var(--sidebarThemeTextColor);
-// $sidebarThemeTextActive: var(--sidebarThemeTextColor);
+$sidebarThemeActive: var(--sidebarThemeColorActive);
 $sidebarThemeGroup: #444b51;
 $sidebarColor: #ffffffb3;
 
 $contentBgColor: #f0f2f5;
 
 $headerHeight: 48px;
+$logoWidth: 200px;
 
 // 边距
 $marginWidth: 20px;
