@@ -1,0 +1,29 @@
+:root {
+  --systemThemeColor: #0960bd;
+  --navbarThemeColor: #ffffff;
+  --navbarThemeTextColor: #ffffff;
+  --sidebarThemeColor: #001529;
+  --sidebarThemeTextColor: #001529;
+  // --sidebarThemeTextColorActive: #ffffff;
+}
+
+$systemTheme: var(--systemThemeColor);
+$navbarTheme: var(--navbarThemeColor);
+$navbarThemeText: var(--navbarThemeTextColor);
+$sidebarTheme: var(--sidebarThemeColor);
+$sidebarThemeText: var(--sidebarThemeTextColor);
+// $sidebarThemeTextActive: var(--sidebarThemeTextColor);
+$sidebarThemeGroup: #444b51;
+$sidebarColor: #ffffffb3;
+
+$contentBgColor: #f0f2f5;
+
+$headerHeight: 48px;
+
+// 边距
+$marginWidth: 20px;
+$paddingWidth: 20px;
+
+// 边框
+$border: 1px solid #f0f0f0;
+

@@ -1,0 +1,18 @@
+# https://editorconfig.org
+# 编辑器代码格式规范 VSCode需要插件支持
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+# 避免 warning: LF will be replaced by CRLF：
+# $:  git config --global core.autocrlf false
+end_of_line = lf
+insert_final_newline = true     # 去除行首任意空白字符
+trim_trailing_whitespace = true # 始终在文件末尾插入一个新行
+
+[*.md]
+max_line_length = off
+insert_final_newline = false
+trim_trailing_whitespace = false
