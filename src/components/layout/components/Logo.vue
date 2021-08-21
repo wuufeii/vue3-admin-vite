@@ -1,7 +1,7 @@
 <template>
   <div class="el-logo">
     <img src="@/assets/logo.png" alt="" />
-    <span class="title" :class="{ 'is-show': isShowTitle }">XX系统</span>
+    <span class="title" :class="{ 'is-hide': isHideTitle }">XX系统</span>
   </div>
 </template>
 
@@ -11,12 +11,12 @@ import { useStore } from 'vuex'
 export default {
   setup() {
     const store = useStore()
-    const isShowTitle = computed(() => {
+    const isHideTitle = computed(() => {
       return store.state.isCollapse
     })
 
     return {
-      isShowTitle
+      isHideTitle
     }
   }
 }

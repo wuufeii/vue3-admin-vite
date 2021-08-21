@@ -2,7 +2,7 @@
   <el-menu
     default-active="2"
     :mode="mode"
-    :collapse="isCollapse"
+    :collapse="isCollapse && mode!=='horizontal'"
     :class="{ 'no-transition': isCollapse }"
   >
     <logo v-if="isShowLogo"></logo>

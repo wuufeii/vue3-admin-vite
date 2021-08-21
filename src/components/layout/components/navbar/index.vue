@@ -30,7 +30,7 @@
 import { reactive, toRefs, computed } from 'vue'
 import { Fold, Expand, Setting } from '@element-plus/icons'
 import { SystemSetting, Logo } from '../layout.js'
-import FullScreen from './FullScreen.vue'
+import FullScreen from './FullScreens.vue'
 import { useStore } from 'vuex'
 export default {
   components: { Fold, Expand, Setting, SystemSetting, Logo, FullScreen },
