@@ -35,7 +35,7 @@ import { useStore } from 'vuex'
 export default {
   components: { Fold, Expand, Setting, SystemSetting, Logo, FullScreen },
   props: {
-    showLogo: Boolean,
+    showLogo: Boolean
   },
   setup(props) {
     const store = useStore()
@@ -72,7 +72,7 @@ export default {
       isCollapse,
       changeCollapse
     }
-  },
+  }
 }
 </script>
 

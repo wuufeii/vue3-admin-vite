@@ -9,7 +9,7 @@ const { dependencies, devDependencies, name, version } = pkg
 
 const __APP_INFO__ = {
   pkg: { dependencies, devDependencies, name, version },
-  lastBuildTime: new Date().toLocaleString(),
+  lastBuildTime: new Date().toLocaleString()
 }
 
 // 官方文档 https://cn.vitejs.dev/config/
@@ -19,11 +19,11 @@ export default ({ command }) => {
 
     server: {
       port: 3000,
-      open: true,
+      open: true
     },
 
     build: {
-      brotliSize: false, // 禁用 brotli 压缩大小报告,以提高大型项目的构建性能。
+      brotliSize: false // 禁用 brotli 压缩大小报告,以提高大型项目的构建性能。
     },
 
     plugins: [vue(), vueJsx({}), svgLoader('/src/assets/svg/')],
@@ -34,22 +34,22 @@ export default ({ command }) => {
         assets: '/src/assets',
         components: '/src/components',
         views: '/src/views',
-        utils: '/src/utils',
-      },
+        utils: '/src/utils'
+      }
     },
 
     // 定义全局常量替换方式,其中每项在开发环境下会被定义在全局，而在构建时被静态替换
     define: {
-      __APP_INFO__: JSON.stringify(__APP_INFO__),
+      __APP_INFO__: JSON.stringify(__APP_INFO__)
     },
 
     css: {
       preprocessorOptions: {
         scss: {
           // additionalData: '@import "@/styles/_variables";',
-          javascriptEnabled: true,
-        },
-      },
-    },
+          javascriptEnabled: true
+        }
+      }
+    }
   }
 }

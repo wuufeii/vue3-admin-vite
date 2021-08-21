@@ -61,7 +61,6 @@
   </el-container>
 </template>
 
-
 <script>
 import Sidebar from './components/sidebar/index.vue'
 import Navbar from './components/navbar/index.vue'
@@ -100,7 +99,7 @@ export default {
       isCollapse,
       sidebarWidth
     }
-  },
+  }
 }
 </script>
 

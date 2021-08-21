@@ -7,7 +7,7 @@ export const _data = {
     '左侧菜单模式',
     '顶部菜单混合模式',
     '顶部菜单模式',
-    '左侧菜单混合模式',
+    '左侧菜单混合模式'
   ],
   systemThemeColor: '#0960BD',
   systemThemeList: [
@@ -19,7 +19,7 @@ export const _data = {
     '#EE4f12',
     '#0096C7',
     '#9C27B0',
-    '#FF9800',
+    '#FF9800'
   ],
   navbarThemeColor: '#FFFFFF',
   navbarThemeList: [
@@ -32,7 +32,7 @@ export const _data = {
     '#24292E',
     '#394664',
     '#001529',
-    '#383F45',
+    '#383F45'
   ],
   sidebarThemeColor: '#001529',
   sidebarThemeList: [
@@ -45,8 +45,8 @@ export const _data = {
     '#304156',
     '#28333E',
     '#344058',
-    '#383F45',
-  ],
+    '#383F45'
+  ]
 }
 
 // 主题切换
@@ -77,7 +77,7 @@ export const _getThemes = (params) => {
   if (params) {
     let { data } = params
     Object.keys(data).forEach((key) => {
-      data[key] = themes[key] || data[key];
+      data[key] = themes[key] || data[key]
     })
   }
   let attribute = ''
@@ -99,13 +99,15 @@ export const _getThemes = (params) => {
     })
   }
   toggleClass({
-    flag: themes?.navbarThemeColor ? themes.navbarThemeColor ==='#FFFFFF' : true,
+    flag: themes?.navbarThemeColor
+      ? themes.navbarThemeColor === '#FFFFFF'
+      : true,
     cls: 'navbar--white'
   })
   _data.navbarList.forEach((item, index) => {
     toggleClass({
       flag: item === _data.navbarType,
-      cls: `layout-type-${index+1}`
+      cls: `layout-type-${index + 1}`
     })
   })
 
@@ -122,17 +124,17 @@ const toggleClass = (params) => {
 
 // 颜色计算方法
 const lighten = (color, amount) => {
-  color = color.indexOf('#') >= 0 ? color.substring(1, color.length) : color;
-  amount = Math.trunc((255 * amount) / 100);
+  color = color.indexOf('#') >= 0 ? color.substring(1, color.length) : color
+  amount = Math.trunc((255 * amount) / 100)
   return `#${addLight(color.substring(0, 2), amount)}${addLight(
     color.substring(2, 4),
     amount
-  )}${addLight(color.substring(4, 6), amount)}`;
+  )}${addLight(color.substring(4, 6), amount)}`
 }
 
 // 颜色计算方法
 const addLight = (color, amount) => {
-  const cc = parseInt(color, 16) + amount;
-  const c = cc > 255 ? 255 : cc;
-  return c.toString(16).length > 1 ? c.toString(16) : `0${c.toString(16)}`;
+  const cc = parseInt(color, 16) + amount
+  const c = cc > 255 ? 255 : cc
+  return c.toString(16).length > 1 ? c.toString(16) : `0${c.toString(16)}`
 }

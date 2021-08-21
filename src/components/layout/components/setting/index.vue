@@ -23,7 +23,7 @@
             :class="[
               'nav-item',
               `nav-item-${index}`,
-              { active: navbarType === item },
+              { active: navbarType === item }
             ]"
             @click="changeSetting('navbarType', item)"
           ></div>
@@ -39,7 +39,10 @@
           :style="{ backgroundColor: item }"
           @click="changeSetting('systemThemeColor', item)"
         ></div>
-        <el-color-picker v-model="systemThemeColor" @active-change="changeSetting('systemThemeColor', $event)"></el-color-picker>
+        <el-color-picker
+          v-model="systemThemeColor"
+          @active-change="changeSetting('systemThemeColor', $event)"
+        ></el-color-picker>
       </div>
       <el-divider>顶栏主题</el-divider>
       <div class="checkbox-row">
@@ -51,7 +54,10 @@
           :style="{ backgroundColor: item }"
           @click="changeSetting('navbarThemeColor', item)"
         ></div>
-        <el-color-picker v-model="navbarThemeColor" @active-change="changeSetting('navbarThemeColor', $event)"></el-color-picker>
+        <el-color-picker
+          v-model="navbarThemeColor"
+          @active-change="changeSetting('navbarThemeColor', $event)"
+        ></el-color-picker>
       </div>
       <el-divider>菜单主题</el-divider>
       <div class="checkbox-row">
@@ -63,7 +69,10 @@
           :style="{ backgroundColor: item }"
           @click="changeSetting('sidebarThemeColor', item)"
         ></div>
-        <el-color-picker v-model="sidebarThemeColor" @active-change="changeSetting('sidebarThemeColor', $event)"></el-color-picker>
+        <el-color-picker
+          v-model="sidebarThemeColor"
+          @active-change="changeSetting('sidebarThemeColor', $event)"
+        ></el-color-picker>
       </div>
     </div>
     <el-button class="draw-save">保存</el-button>
@@ -78,7 +87,7 @@ export default {
   setup() {
     const data = reactive(_data)
     const store = useStore()
-    _getThemes({data})
+    _getThemes({ data })
     const showDraw = () => (data.drawer = true)
     const changeSetting = (type, value) => {
       _changeSetting({ type, value, store, data })
@@ -89,7 +98,7 @@ export default {
       showDraw,
       changeSetting
     }
-  },
+  }
 }
 </script>
 

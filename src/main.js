@@ -7,10 +7,9 @@ import 'element-plus/lib/theme-chalk/index.css'
 import 'assets/css/layout.scss'
 import SvgIcon from 'components/SvgIcon.vue'
 
-
 let app = createApp(App)
 app.use(store)
 app.use(router)
 app.use(ElementPlus)
-app.component('SvgIcon',SvgIcon)
+app.component('SvgIcon', SvgIcon)
 app.mount('#app')

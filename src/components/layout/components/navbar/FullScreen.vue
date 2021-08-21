@@ -25,7 +25,7 @@ import { changeFullScreen, listenerEvent } from './fullScreen'
 export default {
   setup() {
     const data = reactive({
-      fullscreen: false,
+      fullscreen: false
     })
     listenerEvent(() => {
       data.fullscreen = !data.fullscreen
@@ -35,11 +35,10 @@ export default {
     const params = toRefs(data)
     return {
       ...params,
-      handleFullScreen,
+      handleFullScreen
     }
-  },
+  }
 }
 </script>
 
-<style>
-</style>
+<style></style>

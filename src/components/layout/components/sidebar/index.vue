@@ -1,5 +1,10 @@
 <template>
-  <el-menu default-active="2" :mode="mode" :collapse="isCollapse" :class="{'no-transition': isCollapse}">
+  <el-menu
+    default-active="2"
+    :mode="mode"
+    :collapse="isCollapse"
+    :class="{ 'no-transition': isCollapse }"
+  >
     <logo v-if="isShowLogo"></logo>
     <el-submenu index="1">
       <template #title>
@@ -54,7 +59,7 @@ export default {
       return props.showLogo
     })
     const isCollapse = computed(() => {
-      if(props.collapse) {
+      if (props.collapse) {
         return collapse
       } else {
         return store.state.isCollapse
@@ -67,7 +72,7 @@ export default {
       isShowLogo,
       isCollapse
     }
-  },
+  }
 }
 </script>
 

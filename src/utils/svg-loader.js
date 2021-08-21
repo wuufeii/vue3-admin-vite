@@ -73,6 +73,6 @@ export const svgLoader = (path, prefix = 'icon') => {
           ''
         )}</svg>`
       )
-    },
+    }
   }
 }

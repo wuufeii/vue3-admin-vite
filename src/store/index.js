@@ -18,8 +18,7 @@ export default createStore({
     getCollapse(state, data) {
       state.isCollapse = data
     }
-
   },
   actions: {},
-  modules: {},
+  modules: {}
 })

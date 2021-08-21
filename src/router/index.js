@@ -9,14 +9,14 @@ const routes = [
       {
         path: 'home',
         name: 'Home',
-        component: () => import('@/views/Home.vue'),
-      },
-    ],
-  },
+        component: () => import('@/views/Home.vue')
+      }
+    ]
+  }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 })
 export default router
