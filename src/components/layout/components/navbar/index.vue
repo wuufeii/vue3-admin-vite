@@ -3,11 +3,21 @@
     <logo v-if="isShowLogo"></logo>
     <div class="header" :class="{ 'has-logo': isShowLogo }">
       <div class="header-left">
-        <fold v-if="!isCollapse" class="navbar-icon _fold" @click="changeCollapse(true)"/>
-        <expand v-else class="navbar-icon _fold" @click="changeCollapse(false)"/>
+        <fold
+          v-if="!isCollapse"
+          class="navbar-icon _fold"
+          @click="changeCollapse(true)"
+        />
+        <expand
+          v-else
+          class="navbar-icon _fold"
+          @click="changeCollapse(false)"
+        />
         <slot name="sidebar"></slot>
       </div>
       <div class="header-right">
+        <full-screen></full-screen>
+        <svg-icon name="language"></svg-icon>
         <setting class="navbar-icon" @click="showSetting" />
       </div>
     </div>
@@ -17,21 +27,25 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { reactive, toRefs, computed } from 'vue'
 import { Fold, Expand, Setting } from '@element-plus/icons'
 import { SystemSetting, Logo } from '../layout.js'
-import {useStore} from 'vuex'
+import FullScreen from './FullScreen.vue'
+import { useStore } from 'vuex'
 export default {
-  components: { Fold, Expand, Setting, SystemSetting, Logo },
+  components: { Fold, Expand, Setting, SystemSetting, Logo, FullScreen },
   props: {
     showLogo: Boolean,
   },
   setup(props) {
-    const setting = ref(null)
     const store = useStore()
+    const data = reactive({
+      setting: null
+    })
+
     // 显示设置页面
     const showSetting = () => {
-      setting.value.showDraw()
+      data.setting.showDraw()
     }
 
     // 是否显示Logo
@@ -49,8 +63,10 @@ export default {
       store.commit('getCollapse', value)
     }
 
+    const params = toRefs(data)
+
     return {
-      setting,
+      ...params,
       showSetting,
       isShowLogo,
       isCollapse,

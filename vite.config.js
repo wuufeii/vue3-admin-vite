@@ -3,6 +3,7 @@ import pkg from './package.json'
 import vue from '@vitejs/plugin-vue'
 // vue-jsx 插件说明 https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { svgLoader } from './src/utils/svg-loader.js'
 
 const { dependencies, devDependencies, name, version } = pkg
 
@@ -25,7 +26,7 @@ export default ({ command }) => {
       brotliSize: false, // 禁用 brotli 压缩大小报告,以提高大型项目的构建性能。
     },
 
-    plugins: [vue(), vueJsx({})],
+    plugins: [vue(), vueJsx({}), svgLoader('/src/assets/svg/')],
 
     resolve: {
       alias: {
