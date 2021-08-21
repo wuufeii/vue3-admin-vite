@@ -1,6 +1,6 @@
 <template>
   <el-container v-if="navbarType === '左侧菜单模式'">
-    <el-aside width="200px">
+    <el-aside :width="sidebarWidth">
       <sidebar :showLogo="true"></sidebar>
     </el-aside>
     <el-container>
@@ -19,7 +19,7 @@
       <navbar :showLogo="true"></navbar>
     </el-header>
     <el-container>
-      <el-aside width="200px">
+      <el-aside :width="sidebarWidth">
         <sidebar></sidebar>
       </el-aside>
       <el-main>
@@ -46,13 +46,13 @@
   </el-container>
 
   <el-container v-else>
-    <el-header>
-      <navbar></navbar>
-    </el-header>
+    <el-aside width="80px">
+      <sidebar :showLogo="true" :collapse="true"></sidebar>
+    </el-aside>
     <el-container>
-      <el-aside width="200px">
-        <sidebar mode="horizontal"></sidebar>
-      </el-aside>
+      <el-header>
+        <navbar></navbar>
+      </el-header>
       <el-main>
         <home v-if="currentPath === '/'"></home>
         <router-view v-else />
@@ -66,7 +66,7 @@
 import Sidebar from './components/sidebar/index.vue'
 import Navbar from './components/navbar/index.vue'
 import Home from 'views/Home.vue'
-import { computed, ref } from 'vue'
+import { reactive, toRefs, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 export default {
@@ -74,21 +74,31 @@ export default {
   setup() {
     const route = useRoute()
     const store = useStore()
-    const type = ref(true)
-    const test = () => {
-      type.value = !type.value
-    }
+
+    // 获取当前路径
     const currentPath = computed(() => {
       return route.path
     })
+
+    // 导航栏类型
     const navbarType = computed(() => {
       return store.state.navbarType
     })
+
+    // 是否折叠菜单
+    const isCollapse = computed(() => {
+      return store.state.isCollapse
+    })
+
+    // 侧边栏宽度
+    const sidebarWidth = computed(() => {
+      return store.state.isCollapse ? '64px' : '200px'
+    })
     return {
       currentPath,
-      type,
-      test,
       navbarType,
+      isCollapse,
+      sidebarWidth
     }
   },
 }

@@ -9,9 +9,9 @@ export const _data = {
     '顶部菜单模式',
     '左侧菜单混合模式',
   ],
-  systemThemeColor: '#0096bd',
+  systemThemeColor: '#0960bd',
   systemThemeList: [
-    '#0096bd',
+    '#0960bd',
     '#0084f4',
     '#009688',
     '#536df3',

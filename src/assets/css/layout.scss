@@ -1,5 +1,6 @@
 @import './common.scss';
 @import './themes.scss';
+@import './mixin.scss';
 .test {
   background-color: $systemTheme;
 }
@@ -13,6 +14,7 @@
 }
 .el-aside {
   height: inherit;
+  transition: all .3s ease-in-out;
 }
 .el-logo {
   display: flex;
@@ -23,17 +25,24 @@
     width: 32px;
     height: 32px;
   }
-  span {
+  .title {
     color: #ffffff;
     font-size: 16px;
     font-weight: 700;
     margin-left: 8px;
+    @include ellipsis;
+    &.is-show {
+      display: none;
+    }
   }
 }
 .el-menu {
   height: inherit;
   background-color: $sidebarTheme;
   border-right: none;
+  &.no-transition {
+    transition: none;
+  }
   .el-menu-item {
     color: $sidebarColor;
     &:hover {
@@ -94,6 +103,38 @@
     }
   }
 }
+.el-menu--popup {
+  .el-menu-item,
+  .el-submenu .el-submenu__title{
+    height: 46px;
+    line-height: 46px;
+  }
+}
+
+.el-menu--collapse {
+  .el-menu-item {
+    &.is-active {
+      background-color: inherit;
+      box-shadow: 3px 0 0 $systemTheme inset;
+      border-right: 0;
+      color: $systemTheme;
+      i {
+        color: inherit !important;
+      }
+    }
+  }
+  .el-submenu {
+    &.is-active {
+      .el-submenu__title {
+        color: $systemTheme;
+        box-shadow: 3px 0 0 $systemTheme inset;
+        i {
+          color: inherit;
+        }
+      }
+    }
+  }
+}
 
 // ----------header----------
 .el-header {
@@ -126,6 +167,7 @@
   .navbar-icon {
     width: 1em;
     height: 1em;
+    cursor: pointer;
   }
 }
 .navbar--white {
@@ -155,9 +197,14 @@
   }
   &.navbar--white {
     .el-logo {
-      span {
+      .title {
         color: $systemTheme;
       }
+    }
+  }
+  .el-logo {
+    .title {
+      display: inline-block;
     }
   }
 }
@@ -168,6 +215,13 @@
     width: $logoWidth;
     span {
       color: #ffffff;
+    }
+  }
+  &.navbar--white {
+    .el-logo {
+      span {
+        color: $systemTheme;
+      }
     }
   }
   .navbar-icon._fold {
@@ -268,6 +322,7 @@
       .el-menu-item {
         &:hover {
           color: $systemTheme;
+          background-color: #ffffff;
           i {
             color: inherit;
           }
@@ -275,7 +330,7 @@
         &.is-active {
           color: $systemTheme;
           border-bottom: 2px solid $systemTheme;
-          // background-color: $systemThemeActive;
+          background-color: #ffffff;
           i {
             color: inherit;
           }
@@ -288,6 +343,8 @@
         &.is-active {
           .el-submenu__title {
             color: $systemTheme;
+            background-color: #ffffff;
+            border-bottom: 2px solid $systemTheme;
             i {
               color: inherit;
             }
@@ -297,6 +354,7 @@
           color: $navbarColor;
           &:hover {
             color: $systemTheme;
+            background-color: #ffffff;
             i {
               color: inherit;
             }
@@ -334,6 +392,80 @@
       }
     }
   }
+}
+
+.layout-type-4 {
+   .el-logo {
+     padding-left: 23px;
+     .title {
+       display: none;
+     }
+   }
+   ._fold {
+     display: none;
+   }
+   .el-menu--collapse {
+     width: 100%;
+     .el-menu-item {
+       &.is-active {
+         span {
+          color: $systemTheme;
+         }
+       }
+     }
+     &>.el-menu-item {
+       height: 70px;
+       line-height: 70px;
+     }
+     &>.el-submenu {
+       &.is-active {
+        &>.el-submenu__title {
+          span {
+            color: $systemTheme;
+          }
+        }
+       }
+       &>.el-submenu__title {
+        height: 70px;
+        line-height: 70px;
+       }
+     }
+
+     &>.el-menu-item>div,
+     .el-submenu__title {
+       display: flex !important;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       padding: 0 !important;
+       i {
+        color: $sidebarColor;
+       }
+       >span {
+         color: $sidebarColor;
+         width: 100%;
+         height: 30px;
+         font-size: 12px;
+         visibility: visible;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+       }
+     }
+   }
+   &.sidebar--white {
+     .el-menu--collapse {
+      &>.el-menu-item:not(.is-active)>div,
+      .el-submenu:not(.is-active) .el-submenu__title {
+        i {
+          color: $navbarColor;
+        }
+        >span {
+          color: $navbarColor;
+        }
+      }
+     }
+   }
 }
 
 // ----------drawer----------

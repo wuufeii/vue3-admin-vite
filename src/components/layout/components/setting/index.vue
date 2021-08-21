@@ -39,7 +39,7 @@
           :style="{ backgroundColor: item }"
           @click="changeSetting('systemThemeColor', item)"
         ></div>
-        <el-color-picker v-model="systemThemeColor"></el-color-picker>
+        <el-color-picker v-model="systemThemeColor" @active-change="changeSetting('systemThemeColor', $event)"></el-color-picker>
       </div>
       <el-divider>顶栏主题</el-divider>
       <div class="checkbox-row">
@@ -51,7 +51,7 @@
           :style="{ backgroundColor: item }"
           @click="changeSetting('navbarThemeColor', item)"
         ></div>
-        <el-color-picker v-model="navbarThemeColor"></el-color-picker>
+        <el-color-picker v-model="navbarThemeColor" @active-change="changeSetting('navbarThemeColor', $event)"></el-color-picker>
       </div>
       <el-divider>菜单主题</el-divider>
       <div class="checkbox-row">
@@ -63,7 +63,7 @@
           :style="{ backgroundColor: item }"
           @click="changeSetting('sidebarThemeColor', item)"
         ></div>
-        <el-color-picker v-model="sidebarThemeColor"></el-color-picker>
+        <el-color-picker v-model="sidebarThemeColor" @active-change="changeSetting('sidebarThemeColor', $event)"></el-color-picker>
       </div>
     </div>
     <el-button class="draw-save">保存</el-button>
@@ -82,11 +82,15 @@ export default {
     const showDraw = () => (data.drawer = true)
     const changeSetting = (type, value) =>
       _changeSetting({ type, value, store, data })
+      const test = (value) => {
+        console.log(value)
+      }
     const params = toRefs(data)
     return {
       ...params,
       showDraw,
       changeSetting,
+      test
     }
   },
 }
