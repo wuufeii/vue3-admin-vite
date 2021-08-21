@@ -54,7 +54,7 @@
   }
 }
 .sidebar--white {
-  $menu-color: #000000d9;
+  $menu-color: $navbarColor;
   .el-menu-item {
     color: $menu-color;
     &.is-active {
@@ -105,7 +105,7 @@
 }
 .navbar--white {
   .el-header {
-    color: #000000d9;
+    color: $navbarColor;
   }
 }
 
@@ -114,13 +114,8 @@
   background-color: $contentBgColor;
 }
 
-.layout-type-2 {
-  .el-logo {
-    width: $logoWidth;
-  }
-}
 .sidebar--white {
-  .layout-type-1 {
+  &.layout-type-1 {
     .el-logo {
       span {
         color: $systemTheme;
@@ -128,8 +123,12 @@
     }
   }
 }
-.navbar--white {
-  .layout-type-2 {
+
+.layout-type-2 {
+  .el-logo {
+    width: $logoWidth;
+  }
+  &.navbar--white {
     .el-logo {
       span {
         color: $systemTheme;
@@ -139,6 +138,7 @@
 }
 
 .layout-type-3 {
+  $_sidebarColor: #ffffffa6;
   .el-logo {
     width: $logoWidth;
     span {
@@ -148,13 +148,43 @@
   .navbar-icon._fold {
     display: none;
   }
-  .el-menu {
-    // background-color: #001529;
+  &:not(.navbar--white) .el-menu {
+    .el-menu-item {
+      background-color: inherit;
+      color: $_sidebarColor;
+      i {
+        color: $_sidebarColor;
+      }
+      &:hover:not(.is-disabled):focus,
+      &:hover:not(.is-disabled):hover {
+        color: #ffffff;
+      }
+    }
+    .el-submenu__title {
+      background-color: inherit;
+      color: $_sidebarColor;
+      i {
+        color: $_sidebarColor;
+      }
+      &:hover {
+        color: #ffffff;
+      }
+    }
   }
-
   .el-menu--horizontal {
     background-color: transparent;
     border-bottom: none;
+    &>.el-menu {
+      background-color: $navbarColor;
+      .el-submenu {
+        background-color: inherit;
+        &.is-active {
+          .el-submenu__title {
+            color: $systemTheme !important;
+          }
+        }
+      }
+    }
     &>.el-menu-item,
     &>.el-submenu .el-submenu__title {
       height: $headerHeight;
@@ -162,31 +192,119 @@
       color: $sidebarColor;
       &:hover {
         color: #ffffff;
+        i {
+          color: #ffffff;
+        }
       }
     }
-  //   .el-menu--horizontal>.el-menu-item:not(.is-disabled):hover {
-  //     background-color: #fff;
-  // }
     &>.el-menu-item {
       border-bottom: none;
       &:hover {
         color: #ffffff;
         background-color: $sidebarThemeActive;
+        i {
+          color: #ffffff;
+        }
       }
       &.is-active {
         background-color: $sidebarThemeActive;
         color: #ffffff;
+        i {
+          color: #ffffff;
+        }
       }
     }
     &>.el-submenu{
       &.is-active {
         .el-submenu__title {
           color: #ffffff;
+          background-color: $sidebarThemeActive;
+          border-bottom: none;
         }
       }
       .el-submenu__title {
         &:hover {
           background-color: $sidebarThemeActive;
+        }
+      }
+    }
+    .el-menu {
+      .el-menu-item.is-active,
+      .el-submenu.is-active>.el-submenu__title {
+        color: #ffffff;
+      }
+      .el-menu-item.is-active {
+        background-color: $systemTheme;
+      }
+    }
+  }
+  &.navbar--white {
+    .el-menu--horizontal {
+      .el-menu-item {
+        &:hover {
+          color: $systemTheme;
+          i {
+            color: inherit;
+          }
+        }
+        &.is-active {
+          color: $systemTheme;
+          border-bottom: 2px solid $systemTheme;
+          // background-color: $systemThemeActive;
+          i {
+            color: inherit;
+          }
+        }
+      }
+      &>.el-menu-item {
+        color: $navbarColor;
+      }
+      &>.el-submenu {
+        &.is-active {
+          .el-submenu__title {
+            color: $systemTheme;
+            i {
+              color: inherit;
+            }
+          }
+        }
+        .el-submenu__title {
+          color: $navbarColor;
+          &:hover {
+            color: $systemTheme;
+            i {
+              color: inherit;
+            }
+          }
+        }
+      }
+      .el-menu {
+        background-color: #ffffff;
+        .el-menu-item {
+          &.is-active {
+            background-color: $systemThemeActive;
+            border-bottom: none;
+          }
+        }
+        .el-submenu {
+          &.is-active {
+            .el-submenu__title {
+              color: $systemTheme;
+              i {
+                color: inherit;
+              }
+            }
+          }
+        }
+        &>.el-submenu {
+          .el-submenu__title {
+            &:hover {
+              color: $systemTheme;
+              i {
+                color: inherit;
+              }
+            }
+          }
         }
       }
     }

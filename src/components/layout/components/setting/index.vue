@@ -78,7 +78,6 @@ export default {
   setup() {
     const data = reactive(_data)
     const store = useStore()
-
     _getThemes({data})
     const showDraw = () => (data.drawer = true)
     const changeSetting = (type, value) =>

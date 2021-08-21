@@ -83,6 +83,8 @@ export const _getThemes = (params) => {
   let attribute = ''
   if (themes.systemThemeColor) {
     attribute += `--systemThemeColor: ${themes.systemThemeColor};`
+    let result = lighten(themes.systemThemeColor, 58)
+    attribute += `--systemThemeColorActive: ${result};`
   }
   if (themes.navbarThemeColor) {
     attribute += `--navbarThemeColor: ${themes.navbarThemeColor};`
@@ -100,13 +102,21 @@ export const _getThemes = (params) => {
     flag: themes?.navbarThemeColor ? themes.navbarThemeColor ==='#ffffff' : true,
     cls: 'navbar--white'
   })
+  _data.navbarList.forEach((item, index) => {
+    toggleClass({
+      flag: item === _data.navbarType,
+      cls: `layout-type-${index+1}`
+    })
+  })
+
   document.querySelector(':root').setAttribute('style', attribute)
 }
 
 // 添加移除class
 const toggleClass = (params) => {
-  let { flag, cls } = params
-  let classList = document.querySelector('body').classList
+  let { flag, cls, dom } = params
+  dom = dom || 'body'
+  let classList = document.querySelector(dom).classList
   flag ? classList.add(cls) : classList.remove(cls)
 }
 

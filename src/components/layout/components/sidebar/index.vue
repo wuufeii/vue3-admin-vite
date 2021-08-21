@@ -18,7 +18,7 @@
       <i class="el-icon-menu"></i>
       <template #title>导航二</template>
     </el-menu-item>
-    <el-menu-item index="3" disabled>
+    <el-menu-item index="3">
       <i class="el-icon-document"></i>
       <template #title>导航三</template>
     </el-menu-item>

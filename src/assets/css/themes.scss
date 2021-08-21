@@ -3,15 +3,18 @@
   --navbarThemeColor: #ffffff;
   --sidebarThemeColor: #001529;
   --sidebarThemeColorActive: #0960bd;
-  --sss: #001529;
+  --systemThemeColorActive: #0960bd;
 }
 
 $systemTheme: var(--systemThemeColor);
 $navbarTheme: var(--navbarThemeColor);
 $sidebarTheme: var(--sidebarThemeColor);
 $sidebarThemeActive: var(--sidebarThemeColorActive);
+$systemThemeActive: var(--systemThemeColorActive);
 $sidebarThemeGroup: #444b51;
+$sidebarThemeBg:  #001529;
 $sidebarColor: #ffffffb3;
+$navbarColor: rgba(0,0,0,.85); // 当navbar背景为白色时
 
 $contentBgColor: #f0f2f5;
 

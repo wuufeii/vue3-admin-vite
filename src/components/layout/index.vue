@@ -1,5 +1,5 @@
 <template>
-  <el-container v-if="navbarType === '左侧菜单模式'" class="layout-type-1">
+  <el-container v-if="navbarType === '左侧菜单模式'">
     <el-aside width="200px">
       <sidebar :showLogo="true"></sidebar>
     </el-aside>
@@ -14,10 +14,7 @@
     </el-container>
   </el-container>
 
-  <el-container
-    v-else-if="navbarType === '顶部菜单混合模式'"
-    class="layout-type-2"
-  >
+  <el-container v-else-if="navbarType === '顶部菜单混合模式'">
     <el-header>
       <navbar :showLogo="true"></navbar>
     </el-header>
@@ -30,7 +27,7 @@
     </el-container>
   </el-container>
 
-  <el-container v-else-if="navbarType === '顶部菜单模式'" class="layout-type-3">
+  <el-container v-else-if="navbarType === '顶部菜单模式'">
     <el-header>
       <navbar :showLogo="true">
         <template v-slot:sidebar>
@@ -43,7 +40,7 @@
     </el-container>
   </el-container>
 
-  <el-container v-else class="layout-type-4">
+  <el-container v-else>
     <el-header>
       <navbar></navbar>
     </el-header>
