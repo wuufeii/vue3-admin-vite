@@ -80,17 +80,14 @@ export default {
     const store = useStore()
     _getThemes({data})
     const showDraw = () => (data.drawer = true)
-    const changeSetting = (type, value) =>
+    const changeSetting = (type, value) => {
       _changeSetting({ type, value, store, data })
-      const test = (value) => {
-        console.log(value)
-      }
+    }
     const params = toRefs(data)
     return {
       ...params,
       showDraw,
-      changeSetting,
-      test
+      changeSetting
     }
   },
 }

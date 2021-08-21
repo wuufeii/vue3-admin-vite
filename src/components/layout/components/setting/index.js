@@ -9,43 +9,43 @@ export const _data = {
     '顶部菜单模式',
     '左侧菜单混合模式',
   ],
-  systemThemeColor: '#0960bd',
+  systemThemeColor: '#0960BD',
   systemThemeList: [
-    '#0960bd',
-    '#0084f4',
+    '#0960BD',
+    '#0084F4',
     '#009688',
-    '#536df3',
-    '#ff5c93',
-    '#ee4f12',
-    '#0096c7',
-    '#9c27b0',
-    '#ff9800',
+    '#536DF3',
+    '#FF5c93',
+    '#EE4f12',
+    '#0096C7',
+    '#9C27B0',
+    '#FF9800',
   ],
-  navbarThemeColor: '#ffffff',
+  navbarThemeColor: '#FFFFFF',
   navbarThemeList: [
-    '#ffffff',
+    '#FFFFFF',
     '#151515',
     '#009688',
-    '#5172dc',
-    '#409eff',
-    '#e74c3c',
-    '#24292e',
+    '#5172DC',
+    '#409EFF',
+    '#E74C3C',
+    '#24292E',
     '#394664',
     '#001529',
-    '#383f45',
+    '#383F45',
   ],
   sidebarThemeColor: '#001529',
   sidebarThemeList: [
     '#001529',
     '#212121',
     '#273352',
-    '#ffffff',
-    '#191b24',
-    '#191a23',
+    '#FFFFFF',
+    '#191B24',
+    '#191A23',
     '#304156',
-    '#28333e',
+    '#28333E',
     '#344058',
-    '#383f45',
+    '#383F45',
   ],
 }
 
@@ -94,12 +94,12 @@ export const _getThemes = (params) => {
   if (themes.sidebarThemeColor) {
     attribute += `--sidebarThemeColor: ${themes.sidebarThemeColor};`
     toggleClass({
-      flag: themes.sidebarThemeColor === '#ffffff',
+      flag: themes.sidebarThemeColor === '#FFFFFF',
       cls: 'sidebar--white'
     })
   }
   toggleClass({
-    flag: themes?.navbarThemeColor ? themes.navbarThemeColor ==='#ffffff' : true,
+    flag: themes?.navbarThemeColor ? themes.navbarThemeColor ==='#FFFFFF' : true,
     cls: 'navbar--white'
   })
   _data.navbarList.forEach((item, index) => {

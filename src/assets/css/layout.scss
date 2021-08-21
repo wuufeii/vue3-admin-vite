@@ -184,10 +184,19 @@
 .sidebar--white {
   &.layout-type-1 {
     .el-logo {
+      border-bottom: $border;
       span {
         color: $systemTheme;
       }
     }
+  }
+  .el-aside>.el-menu {
+    border-right: $border;
+  }
+}
+.navbar--white {
+  .header {
+    border-bottom: $border;
   }
 }
 
@@ -197,6 +206,8 @@
   }
   &.navbar--white {
     .el-logo {
+      border-bottom: $border;
+      border-right: $border;
       .title {
         color: $systemTheme;
       }
