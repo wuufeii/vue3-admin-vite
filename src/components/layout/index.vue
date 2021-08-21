@@ -22,8 +22,10 @@
       <el-aside width="200px">
         <sidebar></sidebar>
       </el-aside>
-      <!-- <home v-if="currentPath === '/'"></home>
-        <router-view v-else /> -->
+      <el-main>
+        <home v-if="currentPath === '/'"></home>
+        <router-view v-else />
+      </el-main>
     </el-container>
   </el-container>
 
@@ -36,7 +38,10 @@
       </navbar>
     </el-header>
     <el-container>
-      <el-main><div @click="test">点我</div></el-main>
+      <el-main>
+        <home v-if="currentPath === '/'"></home>
+        <router-view v-else />
+      </el-main>
     </el-container>
   </el-container>
 
@@ -48,7 +53,10 @@
       <el-aside width="200px">
         <sidebar mode="horizontal"></sidebar>
       </el-aside>
-      <el-main><div @click="test">点我</div></el-main>
+      <el-main>
+        <home v-if="currentPath === '/'"></home>
+        <router-view v-else />
+      </el-main>
     </el-container>
   </el-container>
 </template>

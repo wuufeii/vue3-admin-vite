@@ -33,6 +33,7 @@
 .el-menu {
   height: inherit;
   background-color: $sidebarTheme;
+  border-right: none;
   .el-menu-item {
     color: $sidebarColor;
     &:hover {
@@ -41,6 +42,13 @@
     &.is-active {
       color: #ffffff;
       background-color: $systemTheme;
+    }
+  }
+  .el-submenu {
+    &.is-active {
+      &>.el-submenu__title {
+        color: #ffffff;
+      }
     }
   }
   .el-menu-item-group {
@@ -57,16 +65,33 @@
   $menu-color: $navbarColor;
   .el-menu-item {
     color: $menu-color;
-    &.is-active {
-      background-color: #ffffff;
+    &:hover {
       color: $systemTheme;
+    }
+    &.is-active {
+      background-color:$systemThemeActive;
+      color: $systemTheme;
+      border-right: 2px solid $systemTheme;
     }
   }
   .el-submenu__title {
     color: $menu-color;
+    &:hover {
+      color: $systemTheme;
+      i {
+        color: inherit;
+      }
+    }
   }
   .el-menu-item-group {
     background-color: #ffffff;
+  }
+  .el-submenu{
+    &.is-active {
+      &>.el-submenu__title {
+        color: $systemTheme;
+      }
+    }
   }
 }
 
