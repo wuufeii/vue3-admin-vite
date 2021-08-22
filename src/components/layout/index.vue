@@ -7,6 +7,7 @@
       <el-header>
         <navbar></navbar>
       </el-header>
+      <tabs></tabs>
       <el-main>
         <home v-if="currentPath === '/'"></home>
         <router-view v-else />
@@ -62,14 +63,15 @@
 </template>
 
 <script>
-import Sidebar from './components/sidebar/index.vue'
-import Navbar from './components/navbar/index.vue'
+// import Sidebar from './components/sidebar/index.vue'
+// import Navbar from './components/navbar/index.vue'
+import {Sidebar, Navbar, Tabs} from './components/layout.js'
 import Home from 'views/Home.vue'
 import { reactive, toRefs, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 export default {
-  components: { Sidebar, Navbar, Home },
+  components: { Sidebar, Navbar, Tabs, Home },
   setup() {
     const route = useRoute()
     const store = useStore()

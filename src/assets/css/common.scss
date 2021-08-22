@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* 全局样式定义 */
+$_border: 1px solid #d9d9d9;
 * {
   box-sizing: border-box;
 }
@@ -43,6 +44,12 @@ body {
   display: flex;
   justify-content: center;
 }
+.border-left {
+  border-left: $_border;
+}
+.border-right {
+  border-right: $_border;
+}
 
 .hover-shadow:hover {
   box-shadow: 0 4px 12px 0 #0000001a;
@@ -58,7 +65,4 @@ body {
   /*滚动条里面小方块*/
   border-radius: 6px;
   background-color: skyblue;
-}
-::-webkit-scrollbar-track {
-  //background-color: white;
 }

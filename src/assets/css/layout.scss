@@ -499,6 +499,79 @@
   }
 }
 
+// ----------tabs----------
+.tabs-content {
+  $_tabsHeight: 30px;
+  $_svgWidth: 32px;
+  display: flex;
+  align-items: center;
+  height: $_tabsHeight;
+  .tabs-svg {
+    width: $_svgWidth;
+    height: calc(#{$_tabsHeight} - 4px);
+    padding: 6px 0;
+    color: rgba(0, 0, 0, .45);
+    cursor: pointer;
+  }
+  .tabs-scroll {
+    width: calc(100% - 60px);
+    height: 100%;
+    left: 2px;
+    top: 2px;
+    position: relative;
+    overflow: hidden;
+    .tabs-row {
+      position: absolute;
+      white-space: nowrap;
+      transition: all .3s ease-in-out;
+    }
+    .el-tag {
+      position: relative;
+      height: calc(#{$_tabsHeight} - 4px);
+      line-height: calc(#{$_tabsHeight} - 4px);
+      max-width: 100px;
+      padding-right: 20px;
+      @include ellipsis;
+      margin-right: 4px;
+      border-radius: 2px;
+      background-color: #ffffff;
+      color: $navbarColor;
+      cursor: pointer;
+
+      &:last-child {
+        margin-right: 0;
+      }
+      .el-tag__close {
+        color: $systemTheme;
+        position: absolute;
+        top: calc(50% + 1px);
+        right: 2px;
+        transform: translateY(-50%);
+        display: none;
+        &:hover {
+          color: #ffffff;
+          background-color: #f56c6c;
+        }
+      }
+      &:hover {
+        color: $systemTheme;
+        .el-tag__close {
+          display: block;
+        }
+      }
+      &.is-active {
+        background-color: $systemTheme;
+        color: #ffffff;
+        &:hover {
+          .el-tag__close {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
+
 // ----------drawer----------
 .el-drawer__header {
   margin-bottom: 0;

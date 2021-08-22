@@ -2,7 +2,7 @@
   <el-tooltip
     class="item"
     effect="dark"
-    :content="fullscreen ? '退出全屏' : '进入全屏'"
+    :content="fullscreen ? '退出全屏' : '全屏'"
     placement="bottom"
   >
     <svg-icon

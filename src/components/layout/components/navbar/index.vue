@@ -22,15 +22,15 @@
       </div>
     </div>
   </div>
-
   <system-setting ref="setting"></system-setting>
 </template>
 
 <script>
 import { reactive, toRefs, computed } from 'vue'
 import { Fold, Expand, Setting } from '@element-plus/icons'
-import { SystemSetting, Logo } from '../layout.js'
-import FullScreen from './FullScreens.vue'
+import SystemSetting from '../setting/index.vue'
+import Logo from '../Logo.vue'
+import FullScreen from './FullScreen.vue'
 import { useStore } from 'vuex'
 export default {
   components: { Fold, Expand, Setting, SystemSetting, Logo, FullScreen },

@@ -9,6 +9,7 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 export default {
+  name: 'Logo',
   setup() {
     const store = useStore()
     const isHideTitle = computed(() => {

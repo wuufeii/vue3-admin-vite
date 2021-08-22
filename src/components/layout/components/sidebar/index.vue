@@ -1,48 +1,29 @@
 <template>
   <el-menu
-    default-active="2"
+    :default-active="activeMenu"
+    :unique-opened="true"
     :mode="mode"
-    :collapse="isCollapse && mode!=='horizontal'"
+    :collapse="isCollapse && mode !== 'horizontal'"
     :class="{ 'no-transition': isCollapse }"
   >
     <logo v-if="isShowLogo"></logo>
-    <el-submenu index="1">
-      <template #title>
-        <i class="el-icon-location"></i>
-        <span>导航一</span>
-      </template>
-      <el-menu-item index="1-1">选项1</el-menu-item>
-      <el-menu-item index="1-2">选项2</el-menu-item>
-      <el-menu-item index="1-3">选项3</el-menu-item>
-      <el-submenu index="1-4">
-        <template #title>选项4</template>
-        <el-menu-item index="1-4-1">选项1</el-menu-item>
-      </el-submenu>
-    </el-submenu>
-    <el-menu-item index="2">
-      <i class="el-icon-menu"></i>
-      <span v-if="showSpan">导航二</span>
-      <template #title>导航二</template>
-    </el-menu-item>
-    <el-menu-item index="3">
-      <i class="el-icon-document"></i>
-      <span v-if="showSpan">导航三</span>
-      <template #title>导航三</template>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <i class="el-icon-setting"></i>
-      <span v-if="showSpan">导航四</span>
-      <template #title>导航四</template>
-    </el-menu-item>
+    <sidebar-item
+      v-for="item in menuList"
+      :key="item.menuId"
+      :item="item"
+      :collapse="collapse"
+    ></sidebar-item>
   </el-menu>
 </template>
 
 <script>
-import { reactive, toRefs, computed } from 'vue'
+import { reactive, toRefs, computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import Logo from '../Logo.vue'
+import SidebarItem from './SidebarItem.vue'
+import {getTags} from 'utils/storage'
 export default {
-  components: { Logo },
+  components: { Logo, SidebarItem },
   props: {
     mode: String,
     showLogo: Boolean,
@@ -51,19 +32,110 @@ export default {
   setup(props) {
     const collapse = props.collapse
     const data = reactive({
-      showSpan: collapse
+      activeMenu: '',
+      menuList: [
+        {
+          menuId: '111',
+          menuName: '导航一',
+          path: '',
+          children: [
+            { menuId: '111-1', menuName: '选项1', path: '', children: [] },
+            { menuId: '111-2', menuName: '选项2', path: '', children: [] },
+            { menuId: '111-3', menuName: '选项3', path: '', children: [] },
+            {
+              menuId: '111-4',
+              menuName: '选项4',
+              path: '',
+              children: [
+                {
+                  menuId: '111-4-1',
+                  menuName: '选项4-1',
+                  path: '',
+                  children: []
+                },
+                {
+                  menuId: '111-4-2',
+                  menuName: '选项4-2',
+                  path: '',
+                  children: []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          menuId: '222',
+          menuName: '导航二',
+          path: '',
+          children: [
+            { menuId: '222-1', menuName: '导航二1', path: '', children: [] },
+            { menuId: '222-2', menuName: '导航二2', path: '', children: [] },
+            { menuId: '222-3', menuName: '导航二3', path: '', children: [] },
+            {
+              menuId: '222-4',
+              menuName: '导航二4',
+              path: '',
+              children: [
+                {
+                  menuId: '222-4-1',
+                  menuName: '导航二4-1',
+                  path: '',
+                  children: [
+                    {
+                      menuId: '222-4-1-1',
+                      menuName: '导航二4-1-1',
+                      path: '',
+                      children: []
+                    }
+                  ]
+                },
+                {
+                  menuId: '222-4-2',
+                  menuName: '导航二4-2',
+                  path: '',
+                  children: []
+                }
+              ]
+            }
+          ]
+        },
+        { menuId: '333', menuName: '导航三', path: '', children: [] },
+        { menuId: '444', menuName: '导航四', path: '', children: [] },
+        {
+          menuId: '555',
+          menuName: '导航五',
+          path: '',
+          children: [
+            { menuId: '555-1', menuName: '导航五-1', path: '', children: [] }
+          ]
+        }
+      ]
     })
     const store = useStore()
 
+    // 是否显示Logo
     const isShowLogo = computed(() => {
       return props.showLogo
     })
+
+    // 是否折叠菜单
     const isCollapse = computed(() => {
       if (props.collapse) {
         return collapse
       } else {
         return store.state.isCollapse
       }
+    })
+
+    const _tags = getTags()
+    _tags.forEach(item => {
+      if(item.active) {
+        data.activeMenu = item.id
+      }
+    })
+
+    watch(() => store.state.activeMenu, (value,old) => {
+      data.activeMenu = value
     })
 
     const params = toRefs(data)
