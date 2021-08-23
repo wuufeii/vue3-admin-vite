@@ -512,61 +512,61 @@
     padding: 6px 0;
     color: rgba(0, 0, 0, .45);
     cursor: pointer;
+    &:hover {
+      color: #000;
+    }
   }
   .tabs-scroll {
-    width: calc(100% - 60px);
+    width: calc(100% -  #{$_svgWidth});
     height: 100%;
-    left: 2px;
     top: 2px;
     position: relative;
     overflow: hidden;
-    .tabs-row {
-      position: absolute;
-      white-space: nowrap;
-      transition: all .3s ease-in-out;
+    .el-tabs__nav-wrap.is-scrollable {
+      padding: 0 $_svgWidth + 1px;
     }
-    .el-tag {
-      position: relative;
-      height: calc(#{$_tabsHeight} - 4px);
-      line-height: calc(#{$_tabsHeight} - 4px);
-      max-width: 100px;
-      padding-right: 20px;
-      @include ellipsis;
-      margin-right: 4px;
+    .el-tabs__header {
+      margin: 0;
+      border-bottom: 0;
+    }
+    .el-tabs__content {
+      display: none;
+    }
+    .el-tabs__nav {
+      border: none;
+    }
+    .el-tabs__nav-next,
+    .el-tabs__nav-prev {
+      line-height: $_tabsHeight - 4px;
+      font-size: 14px;
+      width: $_svgWidth;
+      text-align: center;
+      &:not(.is-disabled):hover {
+        color: #000;
+      }
+      &.is-disabled {
+        opacity: .4;
+        cursor: not-allowed;
+      }
+    }
+    .el-tabs__item {
+      height: $_tabsHeight - 4px;
+      line-height: $_tabsHeight - 5px;
+      font-size: 12px;
+      margin: 0 2px;
+      border: 1px solid #d9d9d9;
       border-radius: 2px;
-      background-color: #ffffff;
-      color: $navbarColor;
-      cursor: pointer;
-
+      padding: 0 10px !important;
+      &:first-child {
+        border-left: 1px solid #d9d9d9;
+      }
       &:last-child {
-        margin-right: 0;
-      }
-      .el-tag__close {
-        color: $systemTheme;
-        position: absolute;
-        top: calc(50% + 1px);
-        right: 2px;
-        transform: translateY(-50%);
-        display: none;
-        &:hover {
-          color: #ffffff;
-          background-color: #f56c6c;
-        }
-      }
-      &:hover {
-        color: $systemTheme;
-        .el-tag__close {
-          display: block;
-        }
+        border-right: 1px solid #d9d9d9;
       }
       &.is-active {
+        border-color: $systemTheme;
         background-color: $systemTheme;
         color: #ffffff;
-        &:hover {
-          .el-tag__close {
-            color: #ffffff;
-          }
-        }
       }
     }
   }

@@ -1,15 +1,10 @@
 <template>
   <div class="tabs-content">
-    <arrow-left class="tabs-svg border-right" @click="handleScroll('left')" />
-    <div class="tabs-scroll" ref="tabsOut">
-      <div class="tabs-row" ref="tabsInner" :style="{ left: left + 'px' }">
-        <el-tag v-for="(item, index) in tags" :key="index" :class="{ 'is-active': item.active }"
-          :closable="!item.unCloseable" @click="handleTag(item)" @close="handleClose(item, index)">
-          {{ item.name }}
-        </el-tag>
-      </div>
+    <div class="tabs-scroll">
+      <el-tabs v-model="activeMenu" type="card" @tab-click="handleTag" @tab-remove="handleClose">
+        <el-tab-pane :closable="!item.unCloseable" :name="item.id" v-for="(item, index) in tags" :key="index" :label="item.name">{{item.name}}</el-tab-pane>
+      </el-tabs>
     </div>
-    <arrow-right class="tabs-svg border-left" @click="handleScroll('right')" />
     <el-dropdown trigger="click">
       <arrow-down class="tabs-svg border-left" />
       <template #dropdown>
@@ -38,7 +33,12 @@
       const store = useStore()
       const data = reactive({
         left: 0,
-        tags: getTags()
+        tags: getTags(),
+        activeMenu: ''
+      })
+
+      data.tags.forEach(item => {
+        if(item.active) data.activeMenu = item.id
       })
 
       const tabsOut = ref(null)
@@ -68,16 +68,24 @@
 
       // 点击tag
       const handleTag = (obj) => {
-        store.commit('getActiveMenu', obj.id)
-        setTags(data.tags, obj.id)
+        store.commit('getActiveMenu', obj.props.name)
+        setTags(data.tags, obj.props.name)
       }
 
       // 关闭tag
-      const handleClose = (obj, index) => {
-        if (obj.active) {
+      const handleClose = value => {
+        let idx = 0
+        let active = false
+        data.tags.forEach((item,index) => {
+          if(item.id === value) {
+            idx = index
+            active = item.active
+          }
+        })
+        if(active) {
           handleMenuClose('current')
         } else {
-          data.tags.splice(index, 1)
+          data.tags.splice(idx, 1)
           setTags(data.tags)
         }
       }
@@ -111,6 +119,7 @@
       watch(
         () => store.state.activeMenu,
         (value, old) => {
+          data.activeMenu = value
           data.tags = getTags()
         }
       )
