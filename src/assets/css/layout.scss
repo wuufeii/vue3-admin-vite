@@ -571,6 +571,30 @@
     }
   }
 }
+.tabs-menu {
+  padding: 6px 0;
+  .el-dropdown-menu__item {
+    line-height: 30px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    &:not(.is-disabled):hover {
+      background-color: #f2f2f2;
+    }
+  }
+  .el-divider {
+    margin: 6px 0;
+  }
+  i {
+    font-size: 18px;
+      &.left {
+      transform: rotate(90deg);
+    }
+    &.right {
+      transform: rotate(-90deg);
+    }
+  }
+}
 
 // ----------drawer----------
 .el-drawer__header {

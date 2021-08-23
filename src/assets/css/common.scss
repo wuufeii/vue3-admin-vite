@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* 全局样式定义 */
+$_border_light: 1px solid #e4e7ed;
 $_border: 1px solid #d9d9d9;
 * {
   box-sizing: border-box;
@@ -49,6 +50,12 @@ body {
 }
 .border-right {
   border-right: $_border;
+}
+.border-bottom {
+  border-bottom: $_border;
+}
+.border-bottom-light {
+  border-bottom: $_border_light;
 }
 
 .hover-shadow:hover {
