@@ -107,7 +107,7 @@
     &.is-active {
       & > .el-submenu__title {
         color: $systemTheme;
-        >i {
+        > i {
           color: inherit;
         }
       }
@@ -510,14 +510,14 @@
     width: $_svgWidth;
     height: calc(#{$_tabsHeight} - 4px);
     padding: 6px 0;
-    color: rgba(0, 0, 0, .45);
+    color: rgba(0, 0, 0, 0.45);
     cursor: pointer;
     &:hover {
       color: #000;
     }
   }
   .tabs-scroll {
-    width: calc(100% -  #{$_svgWidth});
+    width: calc(100% - #{$_svgWidth});
     height: 100%;
     top: 2px;
     position: relative;
@@ -545,7 +545,7 @@
         color: #000;
       }
       &.is-disabled {
-        opacity: .4;
+        opacity: 0.4;
         cursor: not-allowed;
       }
     }
@@ -587,7 +587,7 @@
   }
   i {
     font-size: 18px;
-      &.left {
+    &.left {
       transform: rotate(90deg);
     }
     &.right {

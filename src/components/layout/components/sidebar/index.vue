@@ -21,7 +21,7 @@ import { reactive, toRefs, computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import Logo from '../Logo.vue'
 import SidebarItem from './SidebarItem.vue'
-import {getTags} from 'utils/storage'
+import { getTags } from 'utils/storage'
 export default {
   components: { Logo, SidebarItem },
   props: {
@@ -128,15 +128,16 @@ export default {
     })
 
     const _tags = getTags()
-    _tags.forEach(item => {
-      if(item.active) {
-        data.activeMenu = item.id
-      }
+    _tags.forEach((item) => {
+      if (item.active) data.activeMenu = item.id
     })
 
-    watch(() => store.state.activeMenu, (value,old) => {
-      data.activeMenu = value
-    })
+    watch(
+      () => store.state.activeMenu,
+      (value, old) => {
+        data.activeMenu = value
+      }
+    )
 
     const params = toRefs(data)
     return {

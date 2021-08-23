@@ -65,7 +65,7 @@
 <script>
 // import Sidebar from './components/sidebar/index.vue'
 // import Navbar from './components/navbar/index.vue'
-import {Sidebar, Navbar, Tabs} from './components/layout.js'
+import { Sidebar, Navbar, Tabs } from './components/layout.js'
 import Home from 'views/Home.vue'
 import { reactive, toRefs, computed } from 'vue'
 import { useRoute } from 'vue-router'

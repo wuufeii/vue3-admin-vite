@@ -4,7 +4,11 @@
       <i class="el-icon-location"></i>
       <span>{{ item.menuName }}</span>
     </template>
-    <sidebar-item v-for="inner in item.children" :key="inner.menuId" :item="inner"></sidebar-item>
+    <sidebar-item
+      v-for="inner in item.children"
+      :key="inner.menuId"
+      :item="inner"
+    ></sidebar-item>
   </el-submenu>
   <el-menu-item :index="item.menuId" v-else @click="handleMenu(item)">
     <i class="el-icon-setting"></i>
@@ -15,7 +19,7 @@
 
 <script>
 import { setTags, getTags } from 'utils/storage.js'
-import {useStore} from 'vuex'
+import { useStore } from 'vuex'
 
 export default {
   props: {
@@ -26,15 +30,15 @@ export default {
     const store = useStore()
     // 点击菜单回调
     const handleMenu = (obj) => {
-      const {menuId, menuName} = obj
+      const { menuId, menuName } = obj
       let tags = getTags()
       let flag = true
-      tags.forEach( item => {
-        if(item.id === menuId) {
+      tags.forEach((item) => {
+        if (item.id === menuId) {
           flag = false
         }
       })
-      if(flag) {
+      if (flag) {
         tags.push({
           id: menuId,
           name: menuName,
@@ -42,7 +46,7 @@ export default {
         })
       }
       store.commit('getActiveMenu', menuId)
-      setTags(tags,menuId)
+      setTags(tags, menuId)
     }
 
     return {
@@ -52,5 +56,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
