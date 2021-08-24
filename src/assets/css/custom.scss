@@ -1,3 +1,21 @@
+@import './themes.scss';
+:root {
+  --el-color-primary:  var(--systemThemeColor);
+}
+.el-button--default {
+  --el-button-font-color: #ffffff;
+  --el-button-background-color: var(--systemThemeColor);
+  --el-button-border-color: var(--systemThemeColor);
+  --el-button-hover-color: var(--systemThemeColor);
+  --el-button-active-font-color: #e6e6e6;
+  --el-button-active-background-color: var(--systemThemeColor);
+  --el-button-active-border-color: var(--systemThemeColor);
+  &:hover,&:focus {
+    background-color: var(--systemThemeColor);
+    color: #ffffff;
+    border-color: var(--systemThemeColor);
+  }
+}
 // ----------自定义switch----------
 .custom-switch {
   --before-text: "\5f00";

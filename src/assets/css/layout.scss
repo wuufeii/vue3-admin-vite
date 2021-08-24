@@ -624,6 +624,10 @@
 }
 
 // ----------drawer----------
+.el-drawer {
+  max-width: 400px;
+  min-width: 300px;
+}
 .el-drawer__header {
   margin-bottom: 0;
   padding: $paddingWidth !important;

@@ -124,9 +124,8 @@ export const _getThemes = (params) => {
 const toggleClass = (params) => {
   let { flag, cls, dom } = params
   dom = dom || 'body'
-  console.log(dom, document.querySelector(dom))
-  let classList = document.querySelector(dom).classList
-  flag ? classList.add(cls) : classList.remove(cls)
+  let classList = document.querySelector(dom)?.classList
+  flag ? classList?.add(cls) : classList?.remove(cls)
 }
 
 // 颜色计算方法

@@ -249,6 +249,7 @@ $nav-bg-white: #273352;
   display: flex;
   justify-content: space-between;
   align-content: center;
+  color: #273352;
 }
 
 .draw-save {
