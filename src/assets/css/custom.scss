@@ -1,6 +1,6 @@
 @import './themes.scss';
 :root {
-  --el-color-primary:  var(--systemThemeColor);
+  --el-color-primary: var(--systemThemeColor);
 }
 .el-button--default {
   --el-button-font-color: #ffffff;
@@ -10,7 +10,8 @@
   --el-button-active-font-color: #e6e6e6;
   --el-button-active-background-color: var(--systemThemeColor);
   --el-button-active-border-color: var(--systemThemeColor);
-  &:hover,&:focus {
+  &:hover,
+  &:focus {
     background-color: var(--systemThemeColor);
     color: #ffffff;
     border-color: var(--systemThemeColor);
@@ -18,8 +19,8 @@
 }
 // ----------自定义switch----------
 .custom-switch {
-  --before-text: "\5f00";
-  --after-text: "\5173";
+  --before-text: '\5f00';
+  --after-text: '\5173';
   $beforeText: var(--before-text);
   $afterText: var(--after-text);
   .el-switch__core {

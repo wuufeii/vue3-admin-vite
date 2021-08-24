@@ -48,8 +48,8 @@ export const _data = {
     '#344058',
     '#383F45'
   ],
-  showBreadcrumb: true
-
+  showBreadcrumb: true,
+  showTabs: true
 }
 
 // 主题切换
@@ -102,6 +102,11 @@ export const _getThemes = (params) => {
   toggleClass({
     flag: themes.showBreadcrumb,
     dom: '.el-breadcrumb',
+    cls: 'is-show'
+  })
+  toggleClass({
+    flag: themes.showTabs,
+    dom: '.tabs-content',
     cls: 'is-show'
   })
   toggleClass({

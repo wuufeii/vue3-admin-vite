@@ -23,10 +23,13 @@
       <el-aside :width="sidebarWidth">
         <sidebar></sidebar>
       </el-aside>
-      <el-main>
-        <home v-if="currentPath === '/'"></home>
-        <router-view v-else />
-      </el-main>
+      <el-container direction="vertical">
+        <tabs></tabs>
+        <main class="el-main">
+          <home v-if="currentPath === '/'"></home>
+          <router-view v-else />
+        </main>
+      </el-container>
     </el-container>
   </el-container>
 
@@ -38,7 +41,8 @@
         </template>
       </navbar>
     </el-header>
-    <el-container>
+    <el-container direction="vertical">
+      <tabs></tabs>
       <el-main>
         <home v-if="currentPath === '/'"></home>
         <router-view v-else />
@@ -54,6 +58,7 @@
       <el-header>
         <navbar></navbar>
       </el-header>
+      <tabs></tabs>
       <el-main>
         <home v-if="currentPath === '/'"></home>
         <router-view v-else />

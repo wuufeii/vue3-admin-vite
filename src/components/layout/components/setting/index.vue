@@ -83,6 +83,14 @@
           @change="changeSetting('showBreadcrumb', $event)"
         ></el-switch>
       </div>
+      <div class="other-row">
+        <span>导航页</span>
+        <el-switch
+          v-model="showTabs"
+          class="custom-switch"
+          @change="changeSetting('showTabs', $event)"
+        ></el-switch>
+      </div>
     </div>
     <el-button class="draw-save">保存</el-button>
   </el-drawer>
@@ -250,6 +258,7 @@ $nav-bg-white: #273352;
   justify-content: space-between;
   align-content: center;
   color: #273352;
+  margin-bottom: 15px;
 }
 
 .draw-save {
