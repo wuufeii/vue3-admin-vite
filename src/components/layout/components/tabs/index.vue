@@ -23,6 +23,7 @@
       <template #dropdown>
         <el-dropdown-menu class="tabs-menu">
           <el-dropdown-item
+            :disabled="disabledCurrent"
             @click="handleMenuClose('current')"
             icon="el-icon-close"
           >
@@ -30,12 +31,14 @@
           </el-dropdown-item>
           <el-divider></el-divider>
           <el-dropdown-item
+            :disabled="disabledLeft"
             @click="handleMenuClose('left')"
             icon="el-icon-download left"
           >
             关闭左侧标签页
           </el-dropdown-item>
           <el-dropdown-item
+            :disabled="disabledRight"
             @click="handleMenuClose('right')"
             icon="el-icon-download right"
           >
@@ -43,12 +46,14 @@
           </el-dropdown-item>
           <el-divider></el-divider>
           <el-dropdown-item
+            :disabled="disabledOther"
             @click="handleMenuClose('other')"
             icon="el-icon-document-remove"
           >
             关闭其他标签页
           </el-dropdown-item>
           <el-dropdown-item
+            :disabled="disabledAll"
             @click="handleMenuClose('all')"
             icon="el-icon-document-delete"
           >
@@ -84,7 +89,12 @@ export default {
     const data = reactive({
       left: 0,
       tabs: getTabs(),
-      activeMenu: ''
+      activeMenu: '',
+      disabledCurrent: true,
+      disabledLeft: true,
+      disabledRight: true,
+      disabledOther: true,
+      disabledAll: true
     })
 
     data.tabs.forEach((item) => {
@@ -116,13 +126,14 @@ export default {
       }
     }
 
-    // 点击tag
+    // 点击tab
     const handleTag = (obj) => {
       store.commit('getActiveMenu', obj.props.name)
       setTabs(data.tabs, obj.props.name)
+      judgeTabs()
     }
 
-    // 关闭tag
+    // 关闭tab
     const handleClose = (value) => {
       let idx = 0
       let active = false
@@ -137,6 +148,7 @@ export default {
       } else {
         data.tabs.splice(idx, 1)
         setTabs(data.tabs)
+        judgeTabs()
       }
     }
 
@@ -166,13 +178,51 @@ export default {
           : tabs.splice(currentIdx + 1, len - currentIdx)
       }
       setTabs(tabs, menuId)
+      judgeTabs()
     }
+
+    // 判断是否可关闭导航栏
+    const judgeTabs = () => {
+      let disabledCurrent = true
+      let disabledLeft = true
+      let disabledRight = true
+      let idx = 0
+      let len = data.tabs.length
+      data.tabs.forEach((item, index) => {
+        if (item.active && !item.unCloseable) disabledCurrent = false
+        if (item.active) idx = index
+      })
+      if (idx > 0) {
+        for (let i = 0; i < idx; i++) {
+          if (!data.tabs[i].unCloseable) {
+            disabledLeft = false
+            break
+          }
+        }
+      }
+      if (idx + 1 < len) {
+        for (let i = len; i > idx + 1; i--) {
+          if (!data.tabs[i - 1].unCloseable) {
+            disabledRight = false
+            break
+          }
+        }
+      }
+
+      data.disabledCurrent = disabledCurrent
+      data.disabledLeft = disabledLeft
+      data.disabledRight = disabledRight
+      data.disabledOther = disabledLeft && disabledRight
+      data.disabledAll = disabledLeft && disabledRight && disabledCurrent
+    }
+    judgeTabs()
 
     watch(
       () => store.state.activeMenu,
       (value, old) => {
         data.activeMenu = value
         data.tabs = getTabs()
+        judgeTabs()
       }
     )
 
