@@ -47,7 +47,9 @@ export const _data = {
     '#28333E',
     '#344058',
     '#383F45'
-  ]
+  ],
+  showBreadcrumb: true
+
 }
 
 // 主题切换
@@ -98,6 +100,11 @@ export const _getThemes = (params) => {
     })
   }
   toggleClass({
+    flag: themes.showBreadcrumb,
+    dom: '.el-breadcrumb',
+    cls: 'is-show'
+  })
+  toggleClass({
     flag: themes?.navbarThemeColor
       ? themes.navbarThemeColor === '#FFFFFF'
       : true,
@@ -117,6 +124,7 @@ export const _getThemes = (params) => {
 const toggleClass = (params) => {
   let { flag, cls, dom } = params
   dom = dom || 'body'
+  console.log(dom, document.querySelector(dom))
   let classList = document.querySelector(dom).classList
   flag ? classList.add(cls) : classList.remove(cls)
 }

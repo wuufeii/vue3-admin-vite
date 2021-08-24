@@ -74,20 +74,31 @@
           @active-change="changeSetting('sidebarThemeColor', $event)"
         ></el-color-picker>
       </div>
+      <el-divider>界面显示</el-divider>
+      <div class="other-row">
+        <span>面包屑</span>
+        <el-switch
+          v-model="showBreadcrumb"
+          class="custom-switch"
+          @change="changeSetting('showBreadcrumb', $event)"
+        ></el-switch>
+      </div>
     </div>
     <el-button class="draw-save">保存</el-button>
   </el-drawer>
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import { reactive, toRefs, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { _data, _changeSetting, _getThemes } from './index.js'
 export default {
   setup() {
     const data = reactive(_data)
     const store = useStore()
-    _getThemes({ data })
+    onMounted(() => {
+      _getThemes({ data })
+    })
     const showDraw = () => (data.drawer = true)
     const changeSetting = (type, value) => {
       _changeSetting({ type, value, store, data })
@@ -106,15 +117,19 @@ export default {
 @import '@/assets/css/themes.scss';
 $nav-bg-dark: #273352;
 $nav-bg-white: #273352;
+
 .draw-content {
   height: calc(100% - 50px);
 }
+
 .day-mode {
   padding-bottom: 10px 0;
 }
+
 .nav-row {
   display: flex;
 }
+
 .nav-item {
   width: 56px;
   height: 48px;
@@ -124,9 +139,11 @@ $nav-bg-white: #273352;
   position: relative;
   box-shadow: 0 1px 2px #0000002e;
   cursor: pointer;
+
   &.active {
     border: 2px solid $systemTheme;
   }
+
   //  box-shadow: 0 0 2.5px red;
   &.nav-item::before {
     content: '';
@@ -139,6 +156,7 @@ $nav-bg-white: #273352;
     border-top-left-radius: inherit;
     border-bottom-left-radius: inherit;
   }
+
   &.nav-item::after {
     content: '';
     position: absolute;
@@ -150,34 +168,42 @@ $nav-bg-white: #273352;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
   }
+
   &.nav-item-0::before {
     z-index: 1;
   }
+
   &.nav-item-1::before {
     background-color: #fff;
   }
+
   &.nav-item-1::after,
   &.nav-item-2::after {
     background-color: $nav-bg-dark;
     border-top-left-radius: inherit;
     border-bottom-right-radius: 0;
   }
+
   &.nav-item-2::before {
     display: none;
   }
+
   &.nav-item-3::before {
     z-index: 1;
     width: 14px;
     box-shadow: 8px 0 0 #fff;
   }
+
   &.nav-item-3::after {
     right: 0;
     border-bottom-right-radius: 0;
   }
 }
+
 .checkbox-row {
   display: flex;
   justify-content: space-between;
+
   .checkbox-item {
     width: 20px;
     height: 20px;
@@ -185,8 +211,10 @@ $nav-bg-white: #273352;
     border-radius: 2px;
     cursor: pointer;
     position: relative;
+
     &.active {
       border-color: $systemTheme;
+
       &::before {
         content: '\2713';
         font-size: 14px;
@@ -198,20 +226,31 @@ $nav-bg-white: #273352;
     }
   }
 }
+
 ::v-deep(.el-color-picker) {
   width: 20px !important;
   height: 20px !important;
 }
+
 ::v-deep(.el-color-picker__trigger) {
   width: 20px !important;
   height: 20px !important;
 }
+
 ::v-deep(.el-color-picker__color) {
   border: none !important;
 }
+
 ::v-deep(.el-color-picker__trigger) {
   padding: 0 !important;
 }
+.other-row {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
 .draw-save {
   bottom: 10px;
   height: 32px;

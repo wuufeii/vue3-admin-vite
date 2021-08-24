@@ -1,0 +1,30 @@
+// ----------自定义switch----------
+.custom-switch {
+  --before-text: "\5f00";
+  --after-text: "\5173";
+  $beforeText: var(--before-text);
+  $afterText: var(--after-text);
+  .el-switch__core {
+    position: relative;
+  }
+  &:not(.is-checked) .el-switch__core {
+    &::after {
+      content: $afterText;
+      position: absolute;
+      right: 5px;
+      top: -2px;
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+  &.is-checked .el-switch__core {
+    &::before {
+      content: $beforeText;
+      position: absolute;
+      left: 5px;
+      top: -1px;
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+}

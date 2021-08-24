@@ -45,6 +45,8 @@
   }
   .el-menu-item {
     color: $sidebarColor;
+    padding-right: 0;
+    @include ellipsis;
     &:hover {
       background-color: inherit;
     }
@@ -54,6 +56,9 @@
     }
   }
   .el-submenu {
+    .el-menu-item {
+      min-width: 0;
+    }
     &.is-active {
       & > .el-submenu__title {
         color: #ffffff;
@@ -67,6 +72,11 @@
     color: $sidebarColor;
     &:hover {
       background-color: inherit;
+    }
+    & > span {
+      display: inline-block;
+      max-width: calc(100% - 45px);
+      @include ellipsis;
     }
   }
 }
@@ -193,6 +203,9 @@
     span a,
     span {
       color: inherit !important;
+    }
+    &:not(.is-show) {
+      display: none;
     }
   }
 }

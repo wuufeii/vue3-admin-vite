@@ -21,7 +21,9 @@ export const setThemes = (data) => {
 // 获取主题
 export const getThemes = () => {
   let result = localStorage.getItem('THEMES')
-  result = result ? JSON.parse(result) : {}
+  result = result ? JSON.parse(result) : {
+    showBreadcrumb: true
+  }
   return result
 }
 
