@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { setTags, getTags } from 'utils/storage.js'
+import { setTabs, getTabs } from 'utils/storage.js'
 import { useStore } from 'vuex'
 
 export default {
@@ -31,22 +31,22 @@ export default {
     // 点击菜单回调
     const handleMenu = (obj) => {
       const { menuId, menuName } = obj
-      let tags = getTags()
+      let tabs = getTabs()
       let flag = true
-      tags.forEach((item) => {
+      tabs.forEach((item) => {
         if (item.id === menuId) {
           flag = false
         }
       })
       if (flag) {
-        tags.push({
+        tabs.push({
           id: menuId,
           name: menuName,
           active: true
         })
       }
       store.commit('getActiveMenu', menuId)
-      setTags(tags, menuId)
+      setTabs(tabs, menuId)
     }
 
     return {

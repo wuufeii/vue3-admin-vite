@@ -17,11 +17,12 @@
 </template>
 
 <script>
-import { reactive, toRefs, computed, watch } from 'vue'
+import { reactive, toRefs, computed, watch, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import Logo from '../Logo.vue'
 import SidebarItem from './SidebarItem.vue'
-import { getTags } from 'utils/storage'
+import { getTabs } from 'utils/storage'
+import { setBreadcrumb } from 'utils/storage'
 export default {
   components: { Logo, SidebarItem },
   props: {
@@ -30,6 +31,7 @@ export default {
     collapse: Boolean
   },
   setup(props) {
+    const store = useStore()
     const collapse = props.collapse
     const data = reactive({
       activeMenu: '',
@@ -50,13 +52,13 @@ export default {
                 {
                   menuId: '111-4-1',
                   menuName: '选项4-1',
-                  path: '',
+                  path: '/',
                   children: []
                 },
                 {
                   menuId: '111-4-2',
                   menuName: '选项4-2',
-                  path: '',
+                  path: '/',
                   children: []
                 }
               ]
@@ -68,9 +70,9 @@ export default {
           menuName: '导航二',
           path: '',
           children: [
-            { menuId: '222-1', menuName: '导航二1', path: '', children: [] },
-            { menuId: '222-2', menuName: '导航二2', path: '', children: [] },
-            { menuId: '222-3', menuName: '导航二3', path: '', children: [] },
+            { menuId: '222-1', menuName: '导航二1', path: '/', children: [] },
+            { menuId: '222-2', menuName: '导航二2', path: '/', children: [] },
+            { menuId: '222-3', menuName: '导航二3', path: '/', children: [] },
             {
               menuId: '222-4',
               menuName: '导航二4',
@@ -84,7 +86,7 @@ export default {
                     {
                       menuId: '222-4-1-1',
                       menuName: '导航二4-1-1',
-                      path: '',
+                      path: '/',
                       children: []
                     }
                   ]
@@ -92,26 +94,25 @@ export default {
                 {
                   menuId: '222-4-2',
                   menuName: '导航二4-2',
-                  path: '',
+                  path: '/',
                   children: []
                 }
               ]
             }
           ]
         },
-        { menuId: '333', menuName: '导航三', path: '', children: [] },
-        { menuId: '444', menuName: '导航四', path: '', children: [] },
+        { menuId: '333', menuName: '导航三', path: '/', children: [] },
+        { menuId: '444', menuName: '导航四', path: '/', children: [] },
         {
           menuId: '555',
           menuName: '导航五',
           path: '',
           children: [
-            { menuId: '555-1', menuName: '导航五-1', path: '', children: [] }
+            { menuId: '555-1', menuName: '导航五-1', path: '/', children: [] }
           ]
         }
       ]
     })
-    const store = useStore()
 
     // 是否显示Logo
     const isShowLogo = computed(() => {
@@ -127,15 +128,31 @@ export default {
       }
     })
 
-    const _tags = getTags()
-    _tags.forEach((item) => {
+    const _tabs = getTabs()
+    _tabs.forEach((item) => {
       if (item.active) data.activeMenu = item.id
     })
+
+    const _getParentMenu = (list, id) => {
+      for (let i in list) {
+        if (list[i].menuId == id) {
+          return [list[i]]
+        }
+        if (list[i].children) {
+          let node = _getParentMenu(list[i].children, id)
+          if (node !== undefined) {
+            return node.concat(list[i])
+          }
+        }
+      }
+    }
+    setBreadcrumb(_getParentMenu(data.menuList, data.activeMenu))
 
     watch(
       () => store.state.activeMenu,
       (value, old) => {
         data.activeMenu = value
+        setBreadcrumb(_getParentMenu(data.menuList, value))
       }
     )
 

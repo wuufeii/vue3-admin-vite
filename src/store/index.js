@@ -1,8 +1,7 @@
 import { createStore } from 'vuex'
+import { getThemes } from 'utils/storage'
 
-let themes = localStorage.getItem('themes')
-themes = themes ? JSON.parse(themes) : {}
-const navbarType = themes?.navbarType ?? '左侧菜单模式'
+const navbarType = getThemes()?.navbarType ?? '左侧菜单模式'
 export default createStore({
   state: {
     navbarType: navbarType,

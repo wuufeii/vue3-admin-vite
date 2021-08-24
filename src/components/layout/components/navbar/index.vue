@@ -13,6 +13,13 @@
           class="navbar-icon _fold"
           @click="changeCollapse(false)"
         />
+        <el-breadcrumb separator="/">
+          <!-- <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item> -->
+          <el-breadcrumb-item v-for="item in breadcrumb" :key="item.menuId">
+            {{ item.menuName }}
+          </el-breadcrumb-item>
+        </el-breadcrumb>
         <slot name="sidebar"></slot>
       </div>
       <div class="header-right">
@@ -26,12 +33,13 @@
 </template>
 
 <script>
-import { reactive, toRefs, computed } from 'vue'
+import { reactive, toRefs, computed, watch } from 'vue'
 import { Fold, Expand, Setting } from '@element-plus/icons'
 import SystemSetting from '../setting/index.vue'
 import Logo from '../Logo.vue'
 import FullScreen from './FullScreen.vue'
 import { useStore } from 'vuex'
+import { getBreadcrumb } from 'utils/storage'
 export default {
   components: { Fold, Expand, Setting, SystemSetting, Logo, FullScreen },
   props: {
@@ -40,13 +48,12 @@ export default {
   setup(props) {
     const store = useStore()
     const data = reactive({
-      setting: null
+      setting: null,
+      breadcrumb: getBreadcrumb()
     })
 
     // 显示设置页面
-    const showSetting = () => {
-      data.setting.showDraw()
-    }
+    const showSetting = () => data.setting.showDraw()
 
     // 是否显示Logo
     const isShowLogo = computed(() => {
@@ -59,9 +66,12 @@ export default {
     })
 
     // 切换菜单状态
-    const changeCollapse = (value) => {
-      store.commit('getCollapse', value)
-    }
+    const changeCollapse = (value) => store.commit('getCollapse', value)
+
+    watch(
+      () => store.state.activeMenu,
+      (value, old) => (data.breadcrumb = getBreadcrumb())
+    )
 
     const params = toRefs(data)
 

@@ -1,3 +1,4 @@
+import { setThemes, getThemes } from 'utils/storage'
 // 定义变量
 export const _data = {
   drawer: false,
@@ -15,8 +16,8 @@ export const _data = {
     '#0084F4',
     '#009688',
     '#536DF3',
-    '#FF5c93',
-    '#EE4f12',
+    '#FF5C93',
+    '#EE4F12',
     '#0096C7',
     '#9C27B0',
     '#FF9800'
@@ -60,20 +61,18 @@ export const _changeSetting = (params) => {
   }
 }
 
-// 设置主题，暂存localStorage
+// 设置主题并暂存缓存
 const settingThemes = (params) => {
   const { type, value } = params
-  let themes = localStorage.getItem('themes')
-  themes = themes ? JSON.parse(themes) : {}
+  let themes = getThemes()
   themes[type] = value
-  localStorage.setItem('themes', JSON.stringify(themes))
+  setThemes(themes)
   _getThemes()
 }
 
 // 读取主题
 export const _getThemes = (params) => {
-  let themes = localStorage.getItem('themes')
-  themes = themes ? JSON.parse(themes) : {}
+  let themes = getThemes()
   if (params) {
     let { data } = params
     Object.keys(data).forEach((key) => {

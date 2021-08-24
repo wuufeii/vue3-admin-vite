@@ -10,7 +10,7 @@
         <el-tab-pane
           :closable="!item.unCloseable"
           :name="item.id"
-          v-for="(item, index) in tags"
+          v-for="(item, index) in tabs"
           :key="index"
           :label="item.name"
         >
@@ -69,7 +69,7 @@ import {
   DocumentRemove,
   DocumentDelete
 } from '@element-plus/icons'
-import { setTags, getTags } from 'utils/storage.js'
+import { setTabs, getTabs } from 'utils/storage.js'
 import { useStore } from 'vuex'
 export default {
   components: {
@@ -83,11 +83,11 @@ export default {
     const store = useStore()
     const data = reactive({
       left: 0,
-      tags: getTags(),
+      tabs: getTabs(),
       activeMenu: ''
     })
 
-    data.tags.forEach((item) => {
+    data.tabs.forEach((item) => {
       if (item.active) data.activeMenu = item.id
     })
 
@@ -119,14 +119,14 @@ export default {
     // 点击tag
     const handleTag = (obj) => {
       store.commit('getActiveMenu', obj.props.name)
-      setTags(data.tags, obj.props.name)
+      setTabs(data.tabs, obj.props.name)
     }
 
     // 关闭tag
     const handleClose = (value) => {
       let idx = 0
       let active = false
-      data.tags.forEach((item, index) => {
+      data.tabs.forEach((item, index) => {
         if (item.id === value) {
           idx = index
           active = item.active
@@ -135,44 +135,44 @@ export default {
       if (active) {
         handleMenuClose('current')
       } else {
-        data.tags.splice(idx, 1)
-        setTags(data.tags)
+        data.tabs.splice(idx, 1)
+        setTabs(data.tabs)
       }
     }
 
-    // 显示tags菜单
+    // 显示tabs菜单
     const handleMenuClose = (type) => {
-      let tags = data.tags
+      let tabs = data.tabs
       let currentIdx = 0
       let menuId = ''
-      tags.forEach((item, index) => {
+      tabs.forEach((item, index) => {
         if (item.active) currentIdx = index
       })
       if (type === 'current') {
         currentIdx = currentIdx > 0 ? currentIdx - 1 : currentIdx + 1
-        menuId = tags[currentIdx]?.id ?? ''
-        tags = tags.filter((item) => !item.active)
+        menuId = tabs[currentIdx]?.id ?? ''
+        tabs = tabs.filter((item) => !item.active)
         store.commit('getActiveMenu', menuId)
       } else if (type === 'other') {
-        tags = tags.filter((item) => item.active)
-        data.tags = tags
+        tabs = tabs.filter((item) => item.active)
+        data.tabs = tabs
       } else if (type === 'all') {
-        tags = tags.filter((item) => item.unCloseable)
+        tabs = tabs.filter((item) => item.unCloseable)
         store.commit('getActiveMenu', '')
       } else {
-        let len = tags.length - 1
+        let len = tabs.length - 1
         type === 'left'
-          ? tags.splice(0, currentIdx)
-          : tags.splice(currentIdx + 1, len - currentIdx)
+          ? tabs.splice(0, currentIdx)
+          : tabs.splice(currentIdx + 1, len - currentIdx)
       }
-      setTags(tags, menuId)
+      setTabs(tabs, menuId)
     }
 
     watch(
       () => store.state.activeMenu,
       (value, old) => {
         data.activeMenu = value
-        data.tags = getTags()
+        data.tabs = getTabs()
       }
     )
 

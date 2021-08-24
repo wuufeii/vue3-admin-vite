@@ -187,9 +187,20 @@
     height: 1em;
     cursor: pointer;
   }
+  .el-breadcrumb {
+    margin-left: 10px;
+    color: #ffffff;
+    span a,
+    span {
+      color: inherit !important;
+    }
+  }
 }
 .navbar--white {
   .el-header {
+    color: $navbarColor;
+  }
+  .el-breadcrumb {
     color: $navbarColor;
   }
 }
@@ -256,6 +267,9 @@
     }
   }
   .navbar-icon._fold {
+    display: none;
+  }
+  .el-breadcrumb {
     display: none;
   }
   &:not(.navbar--white) .el-menu {
