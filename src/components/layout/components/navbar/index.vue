@@ -25,6 +25,7 @@
       <div class="header-right">
         <full-screen></full-screen>
         <svg-icon name="language"></svg-icon>
+        <user-info></user-info>
         <setting class="navbar-icon" @click="showSetting" />
       </div>
     </div>
@@ -40,8 +41,9 @@ import Logo from '../Logo.vue'
 import FullScreen from './FullScreen.vue'
 import { useStore } from 'vuex'
 import { getBreadcrumb } from 'utils/storage'
+import UserInfo from './UserInfo.vue'
 export default {
-  components: { Fold, Expand, Setting, SystemSetting, Logo, FullScreen },
+  components: { Fold, Expand, Setting, SystemSetting, Logo, FullScreen, UserInfo },
   props: {
     showLogo: Boolean
   },

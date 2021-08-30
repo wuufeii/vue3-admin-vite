@@ -127,7 +127,8 @@ $nav-bg-dark: #273352;
 $nav-bg-white: #273352;
 
 .draw-content {
-  height: calc(100% - 50px);
+  height: calc(100% - 30px);
+  overflow-y: auto;
 }
 
 .day-mode {
@@ -140,24 +141,25 @@ $nav-bg-white: #273352;
 
 .nav-item {
   width: 56px;
-  height: 48px;
+  height: 50px;
   margin-right: 16px;
   border-radius: 4px;
   background-color: #f0f2f5;
   position: relative;
-  box-shadow: 0 1px 2px #0000002e;
+  box-shadow: 0 0 2px rgba(20, 16, 16, .2);
   cursor: pointer;
+  border: 2px solid #fff;
 
   &.active {
-    border: 2px solid $systemTheme;
+    border-color: $systemTheme;
   }
 
   //  box-shadow: 0 0 2.5px red;
   &.nav-item::before {
     content: '';
     position: absolute;
-    top: -1px;
-    left: -1px;
+    top: 0;
+    left: 0;
     bottom: 0;
     width: 17px;
     background-color: $nav-bg-dark;
@@ -168,9 +170,9 @@ $nav-bg-white: #273352;
   &.nav-item::after {
     content: '';
     position: absolute;
-    top: -1px;
-    left: -1px;
-    right: -1px;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 12px;
     background-color: #fff;
     border-top-left-radius: inherit;
@@ -262,7 +264,6 @@ $nav-bg-white: #273352;
 }
 
 .draw-save {
-  bottom: 10px;
   height: 32px;
   width: 100%;
   background-color: $systemTheme;
