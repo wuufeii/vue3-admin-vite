@@ -27,6 +27,7 @@ export default {}
   font-size: 14px;
   margin: 0 4px;
   cursor: pointer;
+  color: var(--navbarColor);
   img {
     width: 24px;
     height: 24px;

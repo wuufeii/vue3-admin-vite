@@ -1,10 +1,6 @@
-@import './common.scss';
-@import './themes.scss';
-@import './mixin.scss';
-.test {
-  background-color: $systemTheme;
-}
-
+@import "./common.scss";
+@import "./themes.scss";
+@import "./mixin.scss";
 #app {
   width: 100%;
   height: 100%;
@@ -626,6 +622,18 @@
     }
     &.right {
       transform: rotate(-90deg);
+    }
+  }
+}
+.night-mode {
+  .header {
+    border-bottom: 1px solid $borderColor;
+  }
+  .tabs-content {
+    background-color: $navbarTheme;
+    .el-tabs__item {
+      color: $navbarColor;
+      border-color: $borderColor;
     }
   }
 }

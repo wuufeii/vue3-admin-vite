@@ -2,7 +2,7 @@ import { setThemes, getThemes } from 'utils/storage'
 // 定义变量
 export const _data = {
   drawer: false,
-  dayMode: false,
+  nightMode: false,
   navbarType: '左侧菜单模式',
   navbarList: [
     '左侧菜单模式',
@@ -55,6 +55,7 @@ export const _data = {
 // 主题切换
 export const _changeSetting = (params) => {
   let { type, value, store, data } = params
+  console.log(type,value)
   data[type] = value
   settingThemes({ type, value })
   if (type === 'navbarType') {
@@ -99,6 +100,10 @@ export const _getThemes = (params) => {
       cls: 'sidebar--white'
     })
   }
+  toggleClass({
+    flag: themes.nightMode,
+    cls: 'night-mode'
+  })
   toggleClass({
     flag: themes.showBreadcrumb,
     dom: '.el-breadcrumb',

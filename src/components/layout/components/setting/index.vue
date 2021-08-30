@@ -4,9 +4,10 @@
       <el-divider>主题</el-divider>
       <div class="flex-justify-center day-mode">
         <el-switch
-          v-model="dayMode"
+          v-model="nightMode"
           active-text="夜间模式"
           inactive-text="日间模式"
+          @change="changeSetting('nightMode', nightMode)"
         ></el-switch>
       </div>
       <el-divider>导航栏模式</el-divider>
@@ -124,7 +125,6 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/themes.scss';
 $nav-bg-dark: #273352;
-$nav-bg-white: #273352;
 
 .draw-content {
   height: calc(100% - 30px);
@@ -261,6 +261,11 @@ $nav-bg-white: #273352;
   align-content: center;
   color: #273352;
   margin-bottom: 15px;
+}
+.night-mode {
+  .other-row {
+    color: #c9d1d9;
+  }
 }
 
 .draw-save {

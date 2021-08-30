@@ -1,9 +1,23 @@
 :root {
   --systemThemeColor: #0960bd;
   --navbarThemeColor: #ffffff;
+  --navbarColor: rgba(0, 0, 0, 0.85); // 当navbar背景为白色时
   --sidebarThemeColor: #001529;
   --sidebarThemeColorActive: #0960bd;
   --systemThemeColorActive: #93ffff;
+  --contentBgColor: #f0f2f5;
+  --border-color: #f0f0f0;
+
+  --el-border-color-base: #dcdfe6;
+}
+
+.night-mode {
+  --navbarThemeColor: #1f1f1f;
+  --navbarColor: #ffffff;
+  --sidebarThemeColor: #1f1f1f;
+  --contentBgColor: #000000;
+  --border-color: #303030;
+  --el-border-color-base: #303030;
 }
 
 $systemTheme: var(--systemThemeColor);
@@ -14,9 +28,9 @@ $systemThemeActive: var(--systemThemeColorActive);
 $sidebarThemeGroup: #444b51;
 $sidebarThemeBg: #001529;
 $sidebarColor: #ffffffb3;
-$navbarColor: rgba(0, 0, 0, 0.85); // 当navbar背景为白色时
+$navbarColor: var(--navbarColor);
 
-$contentBgColor: #f0f2f5;
+$contentBgColor: var(--contentBgColor);
 
 $headerHeight: 48px;
 $logoWidth: 200px;
@@ -26,5 +40,5 @@ $marginWidth: 20px;
 $paddingWidth: 20px;
 
 // 边框
-$border: 1px solid #f0f0f0;
-$borderColor: #f0f0f0;
+$borderColor: var(--border-color);
+$border: 1px solid $borderColor;
