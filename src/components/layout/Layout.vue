@@ -65,7 +65,7 @@
 
 <script>
 import { Sidebar, Navbar, Tabs } from './components/layout.js'
-import {computed } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 export default {

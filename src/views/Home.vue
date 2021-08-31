@@ -64,11 +64,30 @@
   <el-row>
     <el-col :span="24">
       <el-card shadow="never">
-        <div class="details"><span>技术栈：</span> vue3.x + vite2.x + vuex4.x + vue-router4.x + element Plus1.x</div>
-        <div class="details"><span>特 点：</span>一键换肤，自定义颜色换肤，多种布局方式，上手及其简单</div>
-        <div class="details"><span>作 者：</span> wuufeii</div>
-        <div class="details"><span>github：</span><a href="https://www.github.com/wuufeii" target="_blank">https://www.github.com/wuufeii</a></div>
-        <div class="details"><span>博 客：</span><a href="https://wuufeii.github.io" target="_blank">https://wuufeii.github.io</a></div>
+        <div class="details">
+          <span>技术栈：</span>
+          vue3.x + vite2.x + vuex4.x + vue-router4.x + element Plus1.x
+        </div>
+        <div class="details">
+          <span>特 点：</span>
+          一键换肤，自定义颜色换肤，多种布局方式，上手及其简单
+        </div>
+        <div class="details">
+          <span>作 者：</span>
+          wuufeii
+        </div>
+        <div class="details">
+          <span>github：</span>
+          <a href="https://www.github.com/wuufeii" target="_blank">
+            https://www.github.com/wuufeii
+          </a>
+        </div>
+        <div class="details">
+          <span>博 客：</span>
+          <a href="https://wuufeii.github.io" target="_blank">
+            https://wuufeii.github.io
+          </a>
+        </div>
       </el-card>
     </el-col>
   </el-row>
@@ -126,12 +145,12 @@ export default {
     padding-bottom: 1rem;
   }
   .bottom {
-    font-size: .875rem;
+    font-size: 0.875rem;
   }
 }
 .details {
-  padding: .5rem 1rem;
-  >span {
+  padding: 0.5rem 1rem;
+  > span {
     color: #999;
   }
 }

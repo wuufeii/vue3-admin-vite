@@ -55,7 +55,6 @@ export const _data = {
 // 主题切换
 export const _changeSetting = (params) => {
   let { type, value, store, data } = params
-  console.log(type,value)
   data[type] = value
   settingThemes({ type, value })
   if (type === 'navbarType') {

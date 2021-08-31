@@ -146,7 +146,7 @@ $nav-bg-dark: #273352;
   border-radius: 4px;
   background-color: #f0f2f5;
   position: relative;
-  box-shadow: 0 0 2px rgba(20, 16, 16, .2);
+  box-shadow: 0 0 2px rgba(20, 16, 16, 0.2);
   cursor: pointer;
   border: 2px solid #fff;
 

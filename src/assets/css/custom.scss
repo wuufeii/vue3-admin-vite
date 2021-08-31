@@ -1,4 +1,4 @@
-@import "./themes.scss";
+@import './themes.scss';
 :root {
   --el-color-primary: var(--systemThemeColor);
 }
@@ -8,9 +8,7 @@
   --el-button-border-color: var(--systemThemeColor);
   --el-button-hover-color: var(--systemThemeColor);
   --el-button-active-font-color: #e6e6e6;
-  --el-button-active-background-color: var(
-    --systemThemeColor
-  );
+  --el-button-active-background-color: var(--systemThemeColor);
   --el-button-active-border-color: var(--systemThemeColor);
   &:hover,
   &:focus {
@@ -21,8 +19,8 @@
 }
 // ----------自定义switch----------
 .custom-switch {
-  --before-text: "\5f00";
-  --after-text: "\5173";
+  --before-text: '\5f00';
+  --after-text: '\5173';
   $beforeText: var(--before-text);
   $afterText: var(--after-text);
   .el-switch__core {
@@ -57,7 +55,7 @@
   --el-card-padding: 12px;
   .el-card__header {
     padding: 0 var(--el-card-padding);
-    font-size: .875rem;
+    font-size: 0.875rem;
     min-height: 36px;
     display: flex;
     align-items: center;

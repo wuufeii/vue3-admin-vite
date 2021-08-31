@@ -43,7 +43,15 @@ import { useStore } from 'vuex'
 import { getBreadcrumb } from 'utils/storage'
 import UserInfo from './UserInfo.vue'
 export default {
-  components: { Fold, Expand, Setting, SystemSetting, Logo, FullScreen, UserInfo },
+  components: {
+    Fold,
+    Expand,
+    Setting,
+    SystemSetting,
+    Logo,
+    FullScreen,
+    UserInfo
+  },
   props: {
     showLogo: Boolean
   },
