@@ -215,11 +215,15 @@
   .el-breadcrumb {
     color: $navbarColor;
   }
+  .header-user {
+    color: $navbarColor;
+  }
 }
 
 // ----------main----------
 .el-main {
   background-color: $contentBgColor;
+  padding: $paddingWidth;
 }
 
 .sidebar--white {

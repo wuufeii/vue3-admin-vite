@@ -21,7 +21,7 @@
 ./test
 <script>
 import { reactive, toRefs } from 'vue'
-import { changeFullScreen, listenerEvent } from './FullScreen'
+import { changeFullScreen, listenerEvent } from './fullScreen'
 export default {
   setup() {
     const data = reactive({

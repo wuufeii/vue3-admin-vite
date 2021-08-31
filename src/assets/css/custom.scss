@@ -51,12 +51,39 @@
 }
 // ----------END-----------
 
+// ----------自定义card----------
+.el-card {
+  --el-card-border-radius: 2px;
+  --el-card-padding: 12px;
+  .el-card__header {
+    padding: 0 var(--el-card-padding);
+    font-size: .875rem;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+// ----------END-----------
+.el-row.justify-between {
+  margin-left: var(--gutter) !important;
+  margin-right: var(--gutter) !important;
+}
+
 .night-mode {
+  $itemColor: #151515;
   .el-drawer {
     --el-drawer-background-color: #151515;
   }
   .el-divider__text {
-    background-color: inherit;
+    background-color: var(--el-drawer-background-color);
     color: inherit;
+  }
+  .el-switch__label:not(.is-active) {
+    color: $navbarColor;
+  }
+  .el-card {
+    background-color: $itemColor;
+    color: $navbarColor;
   }
 }
