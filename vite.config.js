@@ -15,7 +15,7 @@ const __APP_INFO__ = {
 // 官方文档 https://cn.vitejs.dev/config/
 export default ({ command }) => {
   return {
-    base: '/',
+    base: './',
 
     server: {
       port: 3000,
