@@ -13,9 +13,9 @@ vue3-admin-vite is a free and open source back-end template. Using the latest`vu
 - **State of The Art Development**：Use front-end front-end technology development such as Vue3/vite2
 - **Theming**: Configurable themes, custom themes, multiple layouts
 
-## 预览
+## Preview
 
-- <a href="https://wuufeii.github.io/wuufeii/vue3-admin">[vue3-admin-vite]</a>
+- Online preview address: <a href="https://wuufeii.github.io/vue3-admin/#/">[vue3-admin-vite]</a>
 
 <p align="center">
     <img alt="vue3-admin-demo" width="100%" src="https://wuufeii.github.io/assets/img/img-vue3-admin/1.gif">
