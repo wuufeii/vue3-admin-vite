@@ -15,7 +15,7 @@ vue3-admin-vite 是一个免费开源的后台模版。使用了最新的`vue3.x
 
 ## 预览
 
-- 在线预览地址： <a href="https://wuufeii.github.io/vue3-admin/#/" blank="_target">[vue3-admin-vite]</a>
+- 在线预览地址： <a href="https://wuufeii.github.io/vue3-admin/#/" target="_blank">[vue3-admin-vite]</a>
 
 <p align="center">
     <img alt="vue3-admin-demo" width="100%" src="https://wuufeii.github.io/assets/img/img-vue3-admin/1.gif">
