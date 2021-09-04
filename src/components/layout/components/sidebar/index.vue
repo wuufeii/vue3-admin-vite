@@ -114,9 +114,7 @@ export default {
           menuId: '555',
           menuName: '导航五',
           path: '',
-          children: [
-            { menuId: '555-1', menuName: '导航五-1', path: '/', children: [] }
-          ]
+          children: [{ menuId: '555-1', menuName: '导航五-1', path: '/', children: [] }]
         }
       ]
     })

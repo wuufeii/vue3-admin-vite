@@ -1,7 +1,7 @@
 // prettier前端代码格式化工具，需要配合插件
 // 使用命令格式化所有文件  npx prettier --write .
 module.exports = {
-  printWidth: 80,
+  printWidth: 100,
   tabWidth: 2,
   useTabs: false,
   semi: false, // 结尾不加分号

@@ -3,16 +3,8 @@
     <logo v-if="isShowLogo"></logo>
     <div class="header" :class="{ 'has-logo': isShowLogo }">
       <div class="header-left">
-        <fold
-          v-if="!isCollapse"
-          class="navbar-icon _fold"
-          @click="changeCollapse(true)"
-        />
-        <expand
-          v-else
-          class="navbar-icon _fold"
-          @click="changeCollapse(false)"
-        />
+        <fold v-if="!isCollapse" class="navbar-icon _fold" @click="changeCollapse(true)" />
+        <expand v-else class="navbar-icon _fold" @click="changeCollapse(false)" />
         <el-breadcrumb separator="/">
           <!-- <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item> -->

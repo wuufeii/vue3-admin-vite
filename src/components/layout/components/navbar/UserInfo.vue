@@ -8,9 +8,7 @@
       <el-dropdown-menu>
         <el-dropdown-item icon="el-icon-user">个人信息</el-dropdown-item>
         <el-dropdown-item icon="el-icon-lock">修改密码</el-dropdown-item>
-        <el-dropdown-item icon="el-icon-switch-button">
-          退出登录
-        </el-dropdown-item>
+        <el-dropdown-item icon="el-icon-switch-button">退出登录</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>

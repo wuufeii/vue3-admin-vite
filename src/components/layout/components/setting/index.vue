@@ -21,11 +21,7 @@
           :disabled="!drawer"
         >
           <div
-            :class="[
-              'nav-item',
-              `nav-item-${index}`,
-              { active: navbarType === item }
-            ]"
+            :class="['nav-item', `nav-item-${index}`, { active: navbarType === item }]"
             @click="changeSetting('navbarType', item)"
           ></div>
         </el-tooltip>

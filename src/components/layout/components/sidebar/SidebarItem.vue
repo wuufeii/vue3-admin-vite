@@ -4,11 +4,7 @@
       <i class="el-icon-location"></i>
       <span>{{ item.menuName }}</span>
     </template>
-    <sidebar-item
-      v-for="inner in item.children"
-      :key="inner.menuId"
-      :item="inner"
-    ></sidebar-item>
+    <sidebar-item v-for="inner in item.children" :key="inner.menuId" :item="inner"></sidebar-item>
   </el-submenu>
   <el-menu-item :index="item.menuId" v-else @click="handleMenu(item)">
     <i class="el-icon-setting"></i>

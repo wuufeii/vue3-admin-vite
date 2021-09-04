@@ -84,9 +84,7 @@
         </div>
         <div class="details">
           <span>博 客：</span>
-          <a href="https://wuufeii.github.io" target="_blank">
-            https://wuufeii.github.io
-          </a>
+          <a href="https://wuufeii.github.io" target="_blank">https://wuufeii.github.io</a>
         </div>
       </el-card>
     </el-col>

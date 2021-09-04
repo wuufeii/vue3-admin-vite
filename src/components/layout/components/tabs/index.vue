@@ -1,12 +1,7 @@
 <template>
   <div class="tabs-content">
     <div class="tabs-scroll">
-      <el-tabs
-        v-model="activeMenu"
-        type="card"
-        @tab-click="handleTag"
-        @tab-remove="handleClose"
-      >
+      <el-tabs v-model="activeMenu" type="card" @tab-click="handleTag" @tab-remove="handleClose">
         <el-tab-pane
           :closable="!item.unCloseable"
           :name="item.id"
@@ -67,13 +62,7 @@
 
 <script>
 import { reactive, toRefs, ref, watch } from 'vue'
-import {
-  ArrowDown,
-  Close,
-  Download,
-  DocumentRemove,
-  DocumentDelete
-} from '@element-plus/icons'
+import { ArrowDown, Close, Download, DocumentRemove, DocumentDelete } from '@element-plus/icons'
 import { setTabs, getTabs } from 'utils/storage.js'
 import { useStore } from 'vuex'
 export default {
@@ -173,9 +162,7 @@ export default {
         store.commit('getActiveMenu', '')
       } else {
         let len = tabs.length - 1
-        type === 'left'
-          ? tabs.splice(0, currentIdx)
-          : tabs.splice(currentIdx + 1, len - currentIdx)
+        type === 'left' ? tabs.splice(0, currentIdx) : tabs.splice(currentIdx + 1, len - currentIdx)
       }
       setTabs(tabs, menuId)
       judgeTabs()

@@ -5,17 +5,8 @@
     :content="fullscreen ? '退出全屏' : '全屏'"
     placement="bottom"
   >
-    <svg-icon
-      v-if="!fullscreen"
-      name="full-screen-max"
-      @click="handleFullScreen"
-    ></svg-icon>
-    <svg-icon
-      :sss="fullscreen"
-      v-else
-      name="full-screen-min"
-      @click="handleFullScreen"
-    ></svg-icon>
+    <svg-icon v-if="!fullscreen" name="full-screen-max" @click="handleFullScreen"></svg-icon>
+    <svg-icon :sss="fullscreen" v-else name="full-screen-min" @click="handleFullScreen"></svg-icon>
   </el-tooltip>
 </template>
 ./test

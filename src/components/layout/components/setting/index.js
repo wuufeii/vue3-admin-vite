@@ -4,12 +4,7 @@ export const _data = {
   drawer: false,
   nightMode: false,
   navbarType: '左侧菜单模式',
-  navbarList: [
-    '左侧菜单模式',
-    '顶部菜单混合模式',
-    '顶部菜单模式',
-    '左侧菜单混合模式'
-  ],
+  navbarList: ['左侧菜单模式', '顶部菜单混合模式', '顶部菜单模式', '左侧菜单混合模式'],
   systemThemeColor: '#0960BD',
   systemThemeList: [
     '#0960BD',
@@ -114,9 +109,7 @@ export const _getThemes = (params) => {
     cls: 'is-show'
   })
   toggleClass({
-    flag: themes?.navbarThemeColor
-      ? themes.navbarThemeColor === '#FFFFFF'
-      : true,
+    flag: themes?.navbarThemeColor ? themes.navbarThemeColor === '#FFFFFF' : true,
     cls: 'navbar--white'
   })
   _data.navbarList.forEach((item, index) => {

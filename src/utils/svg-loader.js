@@ -47,10 +47,7 @@ function findSvgFile(dir) {
             content += `viewBox="0 0 ${width} ${height}"`
           }
           // 将svg的文件名和id-prefix拼接成<symbol>标签的id
-          return `<symbol id="${idPrefix}-${dirent.name.replace(
-            '.svg',
-            ''
-          )}" ${content}>`
+          return `<symbol id="${idPrefix}-${dirent.name.replace('.svg', '')}" ${content}>`
         })
         // 将闭合标签/svg也换成symbol
         .replace('</svg>', '</symbol>')
