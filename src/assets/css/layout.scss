@@ -662,3 +662,8 @@
 .el-drawer__body {
   padding: $paddingWidth;
 }
+
+// ----------sidebar menu background color fix----------
+.el-aside>.el-menu {
+  overflow: auto;
+}
