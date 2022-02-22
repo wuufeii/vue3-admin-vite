@@ -41,9 +41,9 @@ export default {
           menuName: '导航一',
           path: '',
           children: [
-            { menuId: '111-1', menuName: '选项1', path: '', children: [] },
-            { menuId: '111-2', menuName: '选项2', path: '', children: [] },
-            { menuId: '111-3', menuName: '选项3', path: '', children: [] },
+            { menuId: '111-1', menuName: '选项1', path: '/home', children: [] },
+            { menuId: '111-2', menuName: '选项2', path: '/test', children: [] },
+            { menuId: '111-3', menuName: '选项3', path: '/', children: [] },
             {
               menuId: '111-4',
               menuName: '这是选项4哦',

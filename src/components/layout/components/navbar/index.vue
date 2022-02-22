@@ -68,7 +68,7 @@ export default {
     })
 
     // 切换菜单状态
-    const changeCollapse = (value) => store.commit('getCollapse', value)
+    const changeCollapse = (value) => store.commit('setCollapse', value)
 
     watch(
       () => store.state.activeMenu,

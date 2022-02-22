@@ -9,18 +9,18 @@ export default createStore({
     activeMenu: ''
   },
   mutations: {
-    // 获取导航栏类型
-    getNavbarType(state, data) {
+    // 设置导航栏类型
+    setNavbarType(state, data) {
       state.navbarType = data
     },
 
-    // 获取菜单折叠
-    getCollapse(state, data) {
+    // 设置菜单折叠
+    setCollapse(state, data) {
       state.isCollapse = data
     },
 
-    // 获取当前选中菜单
-    getActiveMenu(state, data) {
+    // 设置当前选中菜单
+    setActiveMenu(state, data) {
       state.activeMenu = data
     }
   },
