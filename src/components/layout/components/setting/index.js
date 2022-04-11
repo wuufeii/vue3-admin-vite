@@ -54,7 +54,7 @@ export const _changeSetting = (params) => {
   settingThemes({ type, value })
   if (type === 'navbarType') {
     data.drawer = false
-    store.commit('getNavbarType', value)
+    store.commit('setNavbarType', value)
   }
 }
 

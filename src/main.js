@@ -7,6 +7,7 @@ import 'element-plus/lib/theme-chalk/index.css'
 import 'assets/css/layout.scss'
 import 'assets/css/custom.scss'
 import SvgIcon from 'components/SvgIcon.vue'
+import './permission.js'
 
 let app = createApp(App)
 app.use(store)

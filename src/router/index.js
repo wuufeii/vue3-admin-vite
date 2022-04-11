@@ -9,9 +9,22 @@ const routes = [
       {
         path: 'home',
         name: 'Home',
-        component: () => import('@/views/Home.vue')
+        component: () => import('@/views/Home.vue'),
+        meta: { requiresAuth: true }
+      },
+      {
+        path: 'test',
+        name: 'Test',
+        component: () => import('@/views/test/Test.vue'),
+        meta: { requiresAuth: true }
       }
     ]
+  },
+  {
+    path: '/login',
+    name:'Login',
+    component: () => import('@/pages/login/Login.vue'),
+    meta: { requiresAuth: false }
   }
 ]
 

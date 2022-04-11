@@ -63,7 +63,8 @@
 <script>
 import { reactive, toRefs, ref, watch } from 'vue'
 import { ArrowDown, Close, Download, DocumentRemove, DocumentDelete } from '@element-plus/icons'
-import { setTabs, getTabs } from 'utils/storage.js'
+import { setTabs, getTabs, getBreadcrumb } from 'utils/storage.js'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 export default {
   components: {
@@ -75,6 +76,7 @@ export default {
   },
   setup() {
     const store = useStore()
+    const router = useRouter()
     const data = reactive({
       left: 0,
       tabs: getTabs(),
@@ -117,9 +119,11 @@ export default {
 
     // 点击tab
     const handleTag = (obj) => {
-      store.commit('getActiveMenu', obj.props.name)
+      store.commit('setActiveMenu', obj.props.name)
       setTabs(data.tabs, obj.props.name)
+      console.log(obj.props.name)
       judgeTabs()
+      router.push({path: getCurrentPath(obj.props.name)})
     }
 
     // 关闭tab
@@ -137,6 +141,7 @@ export default {
       } else {
         data.tabs.splice(idx, 1)
         setTabs(data.tabs)
+        gotoCurrentPath()
         judgeTabs()
       }
     }
@@ -153,19 +158,42 @@ export default {
         currentIdx = currentIdx > 0 ? currentIdx - 1 : currentIdx + 1
         menuId = tabs[currentIdx]?.id ?? ''
         tabs = tabs.filter((item) => !item.active)
-        store.commit('getActiveMenu', menuId)
+        store.commit('setActiveMenu', menuId)
       } else if (type === 'other') {
         tabs = tabs.filter((item) => item.active)
         data.tabs = tabs
       } else if (type === 'all') {
         tabs = tabs.filter((item) => item.unCloseable)
-        store.commit('getActiveMenu', '')
+        store.commit('setActiveMenu', '')
       } else {
         let len = tabs.length - 1
         type === 'left' ? tabs.splice(0, currentIdx) : tabs.splice(currentIdx + 1, len - currentIdx)
       }
       setTabs(tabs, menuId)
+      gotoCurrentPath()
       judgeTabs()
+    }
+
+    // 获取当前路由路径
+    const getCurrentPath = (id) => {
+      const tabs = getTabs()
+      for (let i = 0; i < tabs.length; i++) {
+        if (tabs[i].id === id) {
+          return tabs[i].path
+        }
+      }
+      return undefined
+    }
+
+    // 跳转到当前路由
+    const gotoCurrentPath = () => {
+      const tabs = getTabs()
+      for (let i = 0; i < tabs.length; i++) {
+        if (tabs[i].active) {
+          router.push({path: tabs[i].path})
+          return
+        }
+      }
     }
 
     // 判断是否可关闭导航栏
